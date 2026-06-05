@@ -9,10 +9,12 @@ export function Header() {
         <div className="logo-icon">
           <LogoIcon />
         </div>
-        <span className="logo-name">Denelsen D</span>
+        <div className="logo-text">
+          <span className="logo-name">Denelsen D</span>
+          <span className="logo-role">Product Designer</span>
+        </div>
       </Link>
       <div className="header-actions">
-        <div className="tagline">Convert, Convert and Include.</div>
         <ThemeToggle />
       </div>
     </header>

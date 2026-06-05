@@ -3,13 +3,15 @@ import { useTheme } from '../theme/ThemeProvider'
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
 
+  const label = theme === 'light' ? 'Dark mode' : 'Light mode'
+
   return (
     <button
       type="button"
       className="theme-toggle"
       onClick={toggleTheme}
-      aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
-      title={theme === 'light' ? 'Dark mode' : 'Light mode'}
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+      title={label}
     >
       {theme === 'light' ? (
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -31,6 +33,7 @@ export function ThemeToggle() {
           />
         </svg>
       )}
+      <span className="theme-toggle-label">{label}</span>
     </button>
   )
 }

@@ -37,7 +37,7 @@ export function SiteFooter({ variant = 'page' }: SiteFooterProps) {
     <footer className={`site-footer${variant === 'card' ? ' site-footer--card' : ''}`}>
       <div className="site-footer-inner">
         <p className="site-footer-tagline">
-          Denelsen - Crafting user journeys that connect, convert and include.
+          Designing experiences that connect, convert and include.
         </p>
         <nav className="site-footer-social" aria-label="Social links">
           {SOCIAL_LINKS.map((link) => (

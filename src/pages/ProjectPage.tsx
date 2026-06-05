@@ -65,7 +65,11 @@ export function ProjectPage() {
           </div>
 
           <div className="post-content">
-            <p className="post-lead">{project.intro}</p>
+            {project.intro.split('\n\n').map((paragraph) => (
+              <p className="post-lead" key={paragraph.slice(0, 48)}>
+                {paragraph}
+              </p>
+            ))}
 
             <div className="post-results-wrap">
               <ResultsCards results={project.results} />
@@ -105,7 +109,7 @@ export function ProjectPage() {
             )}
 
             <blockquote>
-              <p>{project.subtitle}</p>
+              <p>{project.insight ?? project.subtitle}</p>
             </blockquote>
 
             {(project.framerUrl || project.webflowUrl) && (
@@ -125,23 +129,20 @@ export function ProjectPage() {
             )}
           </div>
 
-          <nav className="post-nav">
-            {prev ? (
+          <nav className="post-nav-wrap" aria-label="Project navigation">
+            <Link to="/" className="post-nav-all">
+              ← All projects
+            </Link>
+            <div className="post-nav">
               <Link to={`/projects/${prev.slug}`} className="post-nav-link prev">
-                <span className="post-nav-label">Previous</span>
+                <span className="post-nav-label">Previous project</span>
                 <span className="post-nav-title">{prev.title}</span>
               </Link>
-            ) : (
-              <span />
-            )}
-            {next ? (
               <Link to={`/projects/${next.slug}`} className="post-nav-link next">
-                <span className="post-nav-label">Next</span>
+                <span className="post-nav-label">Next project</span>
                 <span className="post-nav-title">{next.title}</span>
               </Link>
-            ) : (
-              <span />
-            )}
+            </div>
           </nav>
         </article>
       </main>

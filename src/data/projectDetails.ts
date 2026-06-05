@@ -48,6 +48,7 @@ export interface ProjectDetail {
   problem: string
   results: ProjectResult[]
   intro: string
+  insight?: string
   sections: ProjectSection[]
   media?: MediaBlock[]
   framerUrl?: string
@@ -296,9 +297,9 @@ const rawProjectDetails: RawProject[] = [
   {
     id: 'safescroll',
     slug: 'safescroll',
-    title: 'SafeScroll',
+    title: 'Safe Scroll',
     tag: 'Concept · 2025',
-    subtitle: 'Breaking Doomscroll Loops with Intent + Friends',
+    subtitle: 'Reducing Doomscrolling',
     date: '2025',
     colors: ['#0d2b1e', '#1a6b4a', '#0a4a2a'],
     patternType: 'dots',
@@ -327,16 +328,17 @@ const rawProjectDetails: RawProject[] = [
       },
     ],
     intro:
-      'SafeScroll emerges to address doomscrolling — a compulsive behavior where users endlessly scroll through negative or anxiety-inducing content on social media and news platforms.',
+      'Doomscrolling isn\'t a willpower failure — it\'s a design failure. Social platforms engineer compulsive engagement at the cost of user wellbeing, and Gen Z and millennials are bearing the consequences: disrupted sleep, rising anxiety, and hours lost to content they didn\'t choose.\n\nSafe Scroll is a mobile concept that intervenes without lecturing. Instead of blocking apps or issuing warnings, it introduces intentional friction at the right moment — surfacing awareness, offering a dignified way to step away, and helping users reclaim control of their own attention.',
     sections: [
       {
-        title: 'Understanding the Pain Points',
+        title: 'What I designed',
         paragraphs: [
-          'SafeScroll isn\'t a timer app. The core loop — start with intent, keep exits easy, reflect without shame — treats attention as something to steward, not police.',
-          'We meet the user before (Ask bar), during (limit overlay), and after (Recap), where behavior actually changes.',
+          'The concept covers onboarding, a session tracker, a mood check-in flow, and an "exit ramp" screen — 8 screens total, prototyped in Figma with motion to demonstrate the intervention at the moment of peak scroll velocity.',
         ],
       },
     ],
+    insight:
+      'The core principle: meet the user where they are. Not a wall that blocks. A door that opens somewhere better.',
     framerUrl: 'https://denelsenuix.framer.website/projects/safescroll',
   },
   {
@@ -424,16 +426,16 @@ const rawProjectDetails: RawProject[] = [
       'Prospects couldn\'t answer: What do you do? Does it work? What\'s my next step? CTAs were buried and load times sluggish.',
     results: [
       {
-        title: 'Lower bounce rate',
-        description: 'Bounce rate down 19 pts on the home page.',
+        title: '−19 pts bounce rate',
+        description: 'Home page bounce rate dropped after the rebuild.',
       },
       {
-        title: 'More CTA clicks',
-        description: 'Primary CTA clicks up 22%.',
+        title: '+22% CTA clicks',
+        description: 'Primary call-to-action engagement increased post-launch.',
       },
       {
-        title: 'Newsletter lift',
-        description: 'Open rate up 34% in the first 30 days.',
+        title: '+34% open rate',
+        description: 'Newsletter performance lift in the first 30 days.',
       },
       {
         title: 'Clean launch',
@@ -465,13 +467,14 @@ export function getProjectById(id: string): ProjectDetail | undefined {
 }
 
 export function getAdjacentProjects(slug: string): {
-  prev: ProjectDetail | null
-  next: ProjectDetail | null
+  prev: ProjectDetail
+  next: ProjectDetail
 } {
   const index = projectDetails.findIndex((p) => p.slug === slug)
-  if (index === -1) return { prev: null, next: null }
+  const total = projectDetails.length
+  const safeIndex = index === -1 ? 0 : index
   return {
-    prev: index > 0 ? projectDetails[index - 1] : null,
-    next: index < projectDetails.length - 1 ? projectDetails[index + 1] : null,
+    prev: projectDetails[(safeIndex - 1 + total) % total],
+    next: projectDetails[(safeIndex + 1) % total],
   }
 }
