@@ -231,6 +231,150 @@ body {
   transform: scale(1.06);
 }
 
+.theme-toggle--lamp {
+  overflow: visible;
+  padding: 0 12px 0 8px;
+}
+
+.theme-toggle-lamp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.theme-toggle-lamp svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.lamp-base {
+  fill: currentColor;
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+}
+
+.lamp-stem,
+.lamp-arm {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  opacity: 0.7;
+  transition:
+    stroke 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.lamp-joint {
+  fill: currentColor;
+  opacity: 0.45;
+  transition: opacity 0.4s ease;
+}
+
+.lamp-shade {
+  fill: currentColor;
+  opacity: 0.2;
+  transition:
+    fill 0.45s ease,
+    opacity 0.45s ease;
+}
+
+.lamp-panel {
+  fill: currentColor;
+  opacity: 0.28;
+  transition:
+    fill 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lamp-glow {
+  fill: url(#lampGlowGrad);
+  opacity: 0;
+  transform: scale(0.55);
+  transform-origin: 38.5px 23.5px;
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lamp-cone {
+  fill: url(#lampConeGrad);
+  opacity: 0;
+  transform: scaleY(0.3);
+  transform-origin: 38px 27px;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lamp-pool {
+  fill: url(#lampPoolGrad);
+  opacity: 0;
+  transform: scaleX(0.4);
+  transform-origin: 37px 50px;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.theme-toggle--lamp.is-lit .lamp-panel {
+  fill: #ffe08a;
+  opacity: 1;
+  filter: drop-shadow(0 0 4px rgba(255, 210, 90, 0.9));
+}
+
+.theme-toggle--lamp.is-lit .lamp-shade {
+  opacity: 0.12;
+}
+
+.theme-toggle--lamp.is-lit .lamp-joint {
+  opacity: 0.55;
+}
+
+.theme-toggle--lamp.is-lit .lamp-glow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.theme-toggle--lamp.is-lit .lamp-cone {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.theme-toggle--lamp.is-lit .lamp-pool {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.theme-toggle--lamp.is-lit {
+  background: color-mix(in srgb, #ffe9a8 14%, var(--toggle-bg));
+  border-color: color-mix(in srgb, #ffd76a 28%, var(--toggle-border));
+}
+
+.theme-toggle--lamp.is-lit:hover {
+  background: color-mix(in srgb, #ffe9a8 22%, var(--toggle-hover-bg));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lamp-panel,
+  .lamp-glow,
+  .lamp-cone,
+  .lamp-pool,
+  .lamp-shade,
+  .lamp-arm,
+  .lamp-stem,
+  .lamp-joint,
+  .lamp-base {
+    transition-duration: 0.01ms;
+  }
+}
+
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -641,8 +785,18 @@ body {
   }
 
   .theme-toggle {
-    width: 36px;
+    width: 40px;
     padding: 0;
+  }
+
+  .theme-toggle--lamp {
+    width: 40px;
+    padding: 0;
+  }
+
+  .theme-toggle-lamp {
+    width: 26px;
+    height: 26px;
   }
 
   .stage {
