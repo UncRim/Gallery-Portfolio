@@ -35,22 +35,24 @@ interface SiteFooterProps {
 export function SiteFooter({ variant = 'page' }: SiteFooterProps) {
   return (
     <footer className={`site-footer${variant === 'card' ? ' site-footer--card' : ''}`}>
-      <p className="site-footer-tagline">
-        Denelsen - Crafting user journeys that connect, convert and include.
-      </p>
-      <nav className="site-footer-social" aria-label="Social links">
-        {SOCIAL_LINKS.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label={link.label}
-          >
-            {link.icon}
-          </a>
-        ))}
-      </nav>
+      <div className="site-footer-inner">
+        <p className="site-footer-tagline">
+          Denelsen - Crafting user journeys that connect, convert and include.
+        </p>
+        <nav className="site-footer-social" aria-label="Social links">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={link.label}
+            >
+              {link.icon}
+            </a>
+          ))}
+        </nav>
+      </div>
     </footer>
   )
 }

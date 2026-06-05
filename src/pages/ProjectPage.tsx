@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { FactsCards } from '../components/project/FactsCards'
+import { LivePrototypeCta } from '../components/project/LivePrototypeCta'
 import { MediaBlockView, PostCover } from '../components/project/PostMedia'
 import { ResultsCards } from '../components/project/ResultsCards'
 import { SiteFooter } from '../components/SiteFooter'
@@ -49,6 +50,13 @@ export function ProjectPage() {
             coverVideo={project.coverVideo}
             coverLottie={project.coverLottie}
           />
+
+          {project.liveUrl && (
+            <LivePrototypeCta
+              href={project.liveUrl}
+              label={project.liveCtaLabel}
+            />
+          )}
 
           <div className="post-facts-wrap">
             <FactsCards role={project.role} problem={project.problem} />

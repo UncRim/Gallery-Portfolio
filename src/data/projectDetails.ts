@@ -41,6 +41,8 @@ export interface ProjectDetail {
   media?: MediaBlock[]
   framerUrl?: string
   webflowUrl?: string
+  liveUrl?: string
+  liveCtaLabel?: string
   /** Key used to pull gallery assets from Webflow CDN */
   webflowGalleryKey?: string
 }
@@ -123,6 +125,8 @@ const rawProjectDetails: RawProject[] = [
       },
     ],
     framerUrl: 'https://denelsenuix.framer.website/projects/higher-ed-concept',
+    liveUrl: 'https://the-chapman-alumni-vault-concept.netlify.app/',
+    liveCtaLabel: 'Explore the Alumni Innovation Vault',
   },
   {
     id: 'ticketmaster-spatial-seat-selection',
@@ -214,6 +218,8 @@ const rawProjectDetails: RawProject[] = [
         'Spatial seat selection screens',
       ),
     ],
+    liveUrl: 'https://ticketmaster-concept.netlify.app/',
+    liveCtaLabel: 'Test the spatial seat selector',
   },
   {
     id: 'safescroll',
@@ -271,7 +277,7 @@ const rawProjectDetails: RawProject[] = [
     colors: ['#1a1a2e', '#2a2a5e', '#111130'],
     patternType: 'grid',
     coverImage: '/projects/katz/hero-and-proof.png',
-    coverLottie: '/lottie/masters-in-ai.json',
+    coverVideo: '/videos/katz-master-in-ai.mp4',
     role: 'Web Designer (UX/UI) · IA · Content Strategy · A11y',
     problem:
       'Prospective students couldn\'t quickly understand the program\'s value, outcomes, or next steps. The page felt dense and brochure-like.',
