@@ -3,6 +3,8 @@ import { LocalDateTime } from './LocalDateTime'
 import { LogoIcon } from './LogoIcon'
 import { ThemeToggle } from './ThemeToggle'
 
+const CONTACT_URL = 'https://www.linkedin.com/in/denelsen-dandi/'
+
 export function Header() {
   return (
     <header className="header">
@@ -12,10 +14,19 @@ export function Header() {
         </div>
         <div className="logo-text">
           <span className="logo-name">Denelsen D</span>
-          <LocalDateTime className="logo-role" />
+          <LocalDateTime className="logo-role logo-role--time" />
+          <span className="logo-role logo-role--title">Product Designer</span>
         </div>
       </Link>
       <div className="header-actions">
+        <a
+          href={CONTACT_URL}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="header-cta"
+        >
+          Let&apos;s talk
+        </a>
         <ThemeToggle />
       </div>
     </header>

@@ -52,6 +52,8 @@ export interface ProjectDetail {
   intro: string
   insight?: string
   sections: ProjectSection[]
+  /** Optional sections rendered after the visuals gallery */
+  sectionsAfterMedia?: ProjectSection[]
   media?: MediaBlock[]
   framerUrl?: string
   webflowUrl?: string
@@ -351,7 +353,7 @@ const rawProjectDetails: RawProject[] = [
     slug: 'katz-master-in-ai-program-page',
     title: 'Master in AI (KATZ School) Page Redesign',
     tag: 'Web Design · 2025',
-    subtitle: 'From brochure page to decision tool.',
+    subtitle: 'From “nice brochure” to “help me decide.”',
     date: '2025',
     colors: ['#1a1a2e', '#2a2a5e', '#111130'],
     patternType: 'grid',
@@ -381,12 +383,53 @@ const rawProjectDetails: RawProject[] = [
       },
     ],
     intro:
-      'I redesigned the Katz Master\'s in AI page so prospects can answer: What will I learn? Who\'s teaching this? What can I do after? Where\'s the proof — and how do I take the next step?',
+      'Prospects don\'t want adjectives; they want answers. I reframed the Katz Master\'s in AI page to match their mental checklist—outcomes, proof, then action. Content is benefit-led, sections are modular, and every block either reduces uncertainty or advances a decision.\n\nThe goal: help prospects answer what will I learn, who\'s teaching this, what can I do after, where\'s the proof — and how do I take the next step?',
     sections: [
       {
-        title: 'Making the Decision Obvious',
+        title: 'Reframing the decision',
         paragraphs: [
-          'Linear IA: Hero → Why/Outcomes → Projects & Faculty → Admissions/FAQ. Every block either reduces uncertainty or advances a decision.',
+          'The original page read like a brochure: dense copy, buried proof, and no clear path from curiosity to application. I treated the redesign as a decision tool, not a content dump — every section earns its place by answering a real prospect question or removing friction from the next step.',
+        ],
+        subsections: [
+          {
+            title: 'Approach',
+            blocks: [
+              {
+                label: 'Audit & goals',
+                text: 'Define the 30–60s decision the page must enable.',
+              },
+              {
+                label: 'IA redesign',
+                text: 'Linear flow — Hero → Why/Outcomes → Projects & Faculty → Admissions/FAQ.',
+              },
+              {
+                label: 'Content strategy',
+                text: 'Rewrite headers in user language; trim copy to scannable chunks.',
+              },
+              {
+                label: 'Components',
+                text: 'Hero with proof chips, outcome cards, project tiles (video-ready), faculty grid, news strip, sticky CTAs.',
+              },
+              {
+                label: 'A11y & mobile',
+                text: 'One type scale, AA contrast, left-aligned paragraphs, 44pt targets.',
+              },
+              {
+                label: 'Handoff',
+                text: 'Analytics events (syllabus/advisor/FAQ/scroll) + test ideas for hero copy and CTA labels.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Solution (what I built)',
+        paragraphs: [
+          'Outcome-first hero with proof chips above the fold — value and credibility before the scroll.',
+          'Program highlights and student outcome cards that speak in results, not features.',
+          'Project tiles ready for video embeds; faculty grid for trust; news strip for freshness.',
+          'Sticky mobile CTAs and a simplified admissions path so the next step is always one tap away.',
+          'Modular Drupal sections marketing can reorder without breaking the decision flow.',
         ],
       },
     ],
@@ -412,6 +455,14 @@ const rawProjectDetails: RawProject[] = [
         ],
         'Page redesign screens',
       ),
+    ],
+    sectionsAfterMedia: [
+      {
+        title: 'Making the Decision Obvious',
+        paragraphs: [
+          'Higher-ed pages shouldn\'t make visitors decode value. This redesign treats the page as a decision instrument—state the promise, prove it fast, and make the next step obvious—so qualified prospects move forward with confidence.',
+        ],
+      },
     ],
     framerUrl: 'https://denelsenuix.framer.website/projects/katz-master-in-ai-program-page',
   },

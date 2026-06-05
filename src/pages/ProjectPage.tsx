@@ -6,6 +6,7 @@ import { MediaBlockView, PostCover } from '../components/project/PostMedia'
 import { ResultsCards } from '../components/project/ResultsCards'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
+import { CalendarIcon, CategoryIcon } from '../components/project/MetaIcons'
 import {
   getAdjacentProjects,
   getProjectBySlug,
@@ -38,11 +39,17 @@ export function ProjectPage() {
             <p className="post-subtitle">{project.subtitle}</p>
             <div className="post-meta">
               <div className="post-meta-pill">
-                <span className="post-tag">{category}</span>
+                <span className="post-meta-item">
+                  <CategoryIcon className="post-meta-icon post-meta-icon--category" />
+                  <span className="post-tag">{category}</span>
+                </span>
                 <span className="post-meta-sep" aria-hidden="true">
                   ·
                 </span>
-                <span className="post-date">{project.date}</span>
+                <span className="post-meta-item">
+                  <CalendarIcon className="post-meta-icon post-meta-icon--date" />
+                  <span className="post-date">{project.date}</span>
+                </span>
               </div>
             </div>
           </header>
@@ -107,9 +114,20 @@ export function ProjectPage() {
               </>
             )}
 
-            <blockquote>
-              <p>{project.insight ?? project.subtitle}</p>
-            </blockquote>
+            {project.sectionsAfterMedia?.map((section) => (
+              <section key={section.title}>
+                <h2>{section.title}</h2>
+                {section.paragraphs?.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                ))}
+              </section>
+            ))}
+
+            {!(project.sectionsAfterMedia && project.sectionsAfterMedia.length > 0) && (
+              <blockquote>
+                <p>{project.insight ?? project.subtitle}</p>
+              </blockquote>
+            )}
 
             {(project.framerUrl || project.webflowUrl) && (
               <p className="post-source-links">
