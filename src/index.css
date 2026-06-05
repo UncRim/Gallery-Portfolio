@@ -231,141 +231,8 @@ body {
   transform: scale(1.06);
 }
 
-.theme-toggle--lamp {
-  overflow: visible;
-  padding: 0 12px 0 8px;
-}
-
-.theme-toggle-lamp {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
+.theme-toggle-icon {
   flex-shrink: 0;
-}
-
-.theme-toggle-lamp svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.lamp-base {
-  fill: currentColor;
-  opacity: 0.9;
-  transition: opacity 0.4s ease;
-}
-
-.lamp-arm {
-  stroke: currentColor;
-  stroke-width: 3.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-  opacity: 0.88;
-  transition:
-    stroke 0.4s ease,
-    opacity 0.4s ease;
-}
-
-.lamp-shade {
-  fill: currentColor;
-  opacity: 0.9;
-  transition:
-    fill 0.45s ease,
-    opacity 0.45s ease;
-}
-
-.lamp-shade-tier {
-  stroke: var(--toggle-bg);
-  stroke-width: 2;
-  stroke-linecap: round;
-  fill: none;
-  transition: stroke 0.45s ease;
-}
-
-.theme-toggle--compact .lamp-shade-tier {
-  stroke: var(--bg-elevated);
-}
-
-.lamp-bulb {
-  fill: currentColor;
-  opacity: 0.45;
-  transition:
-    fill 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.lamp-glow {
-  opacity: 0;
-  transform: scale(0.45);
-  transform-origin: 34px 16px;
-  transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.lamp-cone {
-  opacity: 0;
-  transform: scaleY(0.25);
-  transform-origin: 34px 22px;
-  transition:
-    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.lamp-pool {
-  opacity: 0;
-  transform: scaleX(0.35);
-  transform-origin: 34px 45px;
-  transition:
-    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.theme-toggle--lamp.is-lit .lamp-bulb {
-  fill: #ffe08a;
-  opacity: 1;
-  filter: drop-shadow(0 0 4px rgba(255, 210, 90, 0.9));
-}
-
-.theme-toggle--lamp.is-lit .lamp-shade {
-  opacity: 1;
-  fill: color-mix(in srgb, #ffe08a 18%, currentColor);
-}
-
-.theme-toggle--lamp.is-lit .lamp-shade-tier {
-  stroke: color-mix(in srgb, #ffe9a8 14%, var(--toggle-bg));
-}
-
-.theme-toggle--compact.is-lit .lamp-shade-tier {
-  stroke: color-mix(in srgb, #ffe9a8 14%, var(--bg-elevated));
-}
-
-.theme-toggle--lamp.is-lit .lamp-glow {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.theme-toggle--lamp.is-lit .lamp-cone {
-  opacity: 1;
-  transform: scaleY(1);
-}
-
-.theme-toggle--lamp.is-lit .lamp-pool {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.theme-toggle--lamp.is-lit {
-  background: color-mix(in srgb, #ffe9a8 14%, var(--toggle-bg));
-  border-color: color-mix(in srgb, #ffd76a 28%, var(--toggle-border));
-}
-
-.theme-toggle--lamp.is-lit:hover {
-  background: color-mix(in srgb, #ffe9a8 22%, var(--toggle-hover-bg));
 }
 
 .theme-toggle--compact {
@@ -377,31 +244,13 @@ body {
   border: 1px solid var(--toggle-border);
 }
 
-.theme-toggle--compact .theme-toggle-lamp {
-  width: 22px;
-  height: 22px;
-}
-
 .theme-toggle--compact:hover {
   transform: none;
 }
 
-.theme-toggle--compact.is-lit {
-  background: color-mix(in srgb, #ffe9a8 12%, var(--bg-elevated));
-  border-color: color-mix(in srgb, #ffd76a 24%, var(--toggle-border));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .lamp-bulb,
-  .lamp-glow,
-  .lamp-cone,
-  .lamp-pool,
-  .lamp-shade,
-  .lamp-shade-tier,
-  .lamp-arm,
-  .lamp-base {
-    transition-duration: 0.01ms;
-  }
+.hicon {
+  display: block;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -1198,7 +1047,9 @@ body {
 }
 
 .post-back {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   margin-bottom: 32px;
   font-size: 14px;
   color: var(--text-muted);
@@ -1876,7 +1727,9 @@ body {
 }
 
 .post-nav-all {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   text-align: left;
   margin-bottom: 24px;
   font-size: 14px;

@@ -6,7 +6,7 @@ import { MediaBlockView, PostCover } from '../components/project/PostMedia'
 import { ResultsCards } from '../components/project/ResultsCards'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
-import { CalendarIcon, CategoryIcon } from '../components/project/MetaIcons'
+import { Hicon } from '../components/icons/Hicon'
 import {
   getAdjacentProjects,
   getProjectBySlug,
@@ -31,7 +31,8 @@ export function ProjectPage() {
       <main className="project-main">
         <article className="post">
           <Link to="/" className="post-back">
-            ← All projects
+            <Hicon name="chevron-left" size={14} aria-hidden />
+            All projects
           </Link>
 
           <header className="post-header">
@@ -40,14 +41,22 @@ export function ProjectPage() {
             <div className="post-meta">
               <div className="post-meta-pill">
                 <span className="post-meta-item">
-                  <CategoryIcon className="post-meta-icon post-meta-icon--category" />
+                  <Hicon
+                    name="tag-full"
+                    size={11}
+                    className="post-meta-icon post-meta-icon--category"
+                  />
                   <span className="post-tag">{category}</span>
                 </span>
                 <span className="post-meta-sep" aria-hidden="true">
                   ·
                 </span>
                 <span className="post-meta-item">
-                  <CalendarIcon className="post-meta-icon post-meta-icon--date" />
+                  <Hicon
+                    name="calendar"
+                    size={11}
+                    className="post-meta-icon post-meta-icon--date"
+                  />
                   <span className="post-date">{project.date}</span>
                 </span>
               </div>
@@ -146,7 +155,8 @@ export function ProjectPage() {
 
           <nav className="post-nav-wrap" aria-label="Project navigation">
             <Link to="/" className="post-nav-all">
-              ← All projects
+              <Hicon name="chevron-left" size={14} aria-hidden />
+              All projects
             </Link>
             <div className="post-nav">
               <Link to={`/projects/${prev.slug}`} className="post-nav-link prev">

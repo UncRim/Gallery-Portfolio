@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { projects } from '../data/projects'
 import { useCoverFlow } from '../hooks/useCoverFlow'
 import { useMediaQuery } from '../hooks/useMediaQuery'
+import { Hicon } from './icons/Hicon'
 import { MobileCarousel } from './MobileCarousel'
 import { Slide } from './Slide'
 
@@ -19,25 +20,7 @@ function ArrowButton({ direction, onClick }: ArrowButtonProps) {
       onClick={onClick}
       aria-label={direction === 'left' ? 'Previous project' : 'Next project'}
     >
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        {direction === 'left' ? (
-          <path
-            d="M10 3L5 8L10 13"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        ) : (
-          <path
-            d="M6 3L11 8L6 13"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        )}
-      </svg>
+      <Hicon name={direction === 'left' ? 'arrow-left' : 'arrow-right'} size={16} />
     </button>
   )
 }
