@@ -457,6 +457,88 @@ body {
   height: 100%;
 }
 
+.mobile-carousel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-carousel-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.mobile-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-carousel-slide {
+  flex: 0 0 84%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-width: 0;
+}
+
+.mobile-carousel-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+}
+
+.mobile-carousel-card .slide-inner {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: min(42vh, 320px);
+}
+
+.mobile-carousel-slide:not(.is-active) .mobile-carousel-card .slide-inner {
+  opacity: 0.88;
+}
+
+.mobile-carousel-label {
+  margin-top: 10px;
+  padding: 0 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.mobile-carousel-title {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mobile-carousel-dots {
+  position: static;
+  transform: none;
+  justify-content: center;
+  margin-top: 2px;
+}
+
 .slide {
   position: absolute;
   aspect-ratio: auto;
@@ -744,6 +826,9 @@ body {
     height: 100%;
     max-height: none;
     border-radius: 16px;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .header {
@@ -766,40 +851,60 @@ body {
   }
 
   .home-hero-wrap {
-    padding: 6px 16px 2px;
+    padding: 4px 16px 0;
   }
 
   .home-hero {
-    font-size: clamp(22px, 6.5vw, 32px);
-    margin-bottom: 4px;
+    font-size: clamp(20px, 5.5vw, 28px);
+    margin-bottom: 0;
   }
 
   .home-tagline {
-    font-size: 13px;
-    line-height: 1.45;
-    padding: 0 4px;
+    display: none;
+  }
+
+  .theme-toggle,
+  .theme-toggle--lamp {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .theme-toggle--lamp.is-lit {
+    background: transparent;
+    border: none;
+  }
+
+  .theme-toggle:hover,
+  .theme-toggle--lamp:hover {
+    background: var(--toggle-hover-bg);
+    transform: none;
   }
 
   .theme-toggle-label {
     display: none;
   }
 
-  .theme-toggle {
-    width: 40px;
-    padding: 0;
-  }
-
-  .theme-toggle--lamp {
-    width: 40px;
-    padding: 0;
-  }
-
   .theme-toggle-lamp {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
   }
 
-  .stage {
+  .stage--mobile {
+    flex: 0 0 auto;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 8px 0 10px;
+    min-height: 0;
+    overflow: visible;
+    cursor: default;
+  }
+
+  .stage--desktop {
     padding: 4px 8px 36px;
     cursor: default;
   }
@@ -808,38 +913,8 @@ body {
     border-radius: 10px;
   }
 
-  .slide.active .slide-label {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    margin-top: 10px;
-    padding: 0 2px;
-  }
-
-  .slide.active .slide-title {
-    font-size: 18px;
-    line-height: 1.25;
-  }
-
-  .slide-meta {
+  .mobile-carousel-label .slide-meta {
     padding: 5px 12px;
-  }
-
-  .dots {
-    bottom: 10px;
-  }
-
-  .arrow-btn {
-    width: 34px;
-    height: 34px;
-  }
-
-  .arrow-left {
-    left: 4px;
-  }
-
-  .arrow-right {
-    right: 4px;
   }
 
   .site-footer {
@@ -876,26 +951,12 @@ body {
 }
 
 @media (max-width: 480px) {
-  .home-hero {
-    font-size: 22px;
+  .mobile-carousel-card .slide-inner {
+    max-height: min(38vh, 280px);
   }
 
-  .home-tagline {
-    font-size: 12px;
-  }
-
-  .slide.active .slide-title {
-    font-size: 16px;
-  }
-
-  .arrow-btn {
-    width: 30px;
-    height: 30px;
-  }
-
-  .arrow-btn svg {
-    width: 14px;
-    height: 14px;
+  .mobile-carousel-title {
+    font-size: 14px;
   }
 }
 

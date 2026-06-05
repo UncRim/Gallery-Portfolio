@@ -21,7 +21,7 @@ function SlideMediaFrame({ children }: { children: ReactNode }) {
   return <div className="slide-media-frame">{children}</div>
 }
 
-function SlideMedia({ project, isActive }: { project: Project; isActive: boolean }) {
+export function SlideMedia({ project, isActive }: { project: Project; isActive: boolean }) {
   const videoSrc = project.coverVideo
   const lottieSrc = project.coverLottie
   const imageSrc = project.coverImage ?? project.image

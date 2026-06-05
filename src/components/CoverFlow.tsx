@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { projects } from '../data/projects'
 import { useCoverFlow } from '../hooks/useCoverFlow'
+import { useMediaQuery } from '../hooks/useMediaQuery'
+import { MobileCarousel } from './MobileCarousel'
 import { Slide } from './Slide'
 
 interface ArrowButtonProps {
@@ -40,7 +42,7 @@ function ArrowButton({ direction, onClick }: ArrowButtonProps) {
   )
 }
 
-export function CoverFlow() {
+function DesktopCoverFlow() {
   const navigate = useNavigate()
   const {
     containerRef,
@@ -64,7 +66,7 @@ export function CoverFlow() {
   }
 
   return (
-    <div className="stage" id="stage">
+    <div className="stage stage--desktop" id="stage">
       <div
         className="coverflow"
         ref={containerRef}
@@ -99,4 +101,18 @@ export function CoverFlow() {
       </div>
     </div>
   )
+}
+
+export function CoverFlow() {
+  const isMobile = useMediaQuery('(max-width: 768px)')
+
+  if (isMobile) {
+    return (
+      <div className="stage stage--mobile" id="stage">
+        <MobileCarousel />
+      </div>
+    )
+  }
+
+  return <DesktopCoverFlow />
 }
