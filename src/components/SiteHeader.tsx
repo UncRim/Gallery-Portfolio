@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { LocalDateTime } from './LocalDateTime'
 import { LogoIcon } from './LogoIcon'
 import { ThemeToggle } from './ThemeToggle'
 
@@ -9,7 +10,7 @@ export function SiteHeader() {
         <LogoIcon />
         <div className="logo-text">
           <span className="logo-name">Denelsen D</span>
-          <span className="logo-role">Product Designer</span>
+          <LocalDateTime className="logo-role" />
         </div>
       </Link>
       <nav className="site-header-nav">

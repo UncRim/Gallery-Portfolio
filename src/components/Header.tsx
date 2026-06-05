@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { LocalDateTime } from './LocalDateTime'
 import { LogoIcon } from './LogoIcon'
 import { ThemeToggle } from './ThemeToggle'
 
@@ -11,7 +12,7 @@ export function Header() {
         </div>
         <div className="logo-text">
           <span className="logo-name">Denelsen D</span>
-          <span className="logo-role">Product Designer</span>
+          <LocalDateTime className="logo-role" />
         </div>
       </Link>
       <div className="header-actions">

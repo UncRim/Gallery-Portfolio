@@ -23,18 +23,24 @@ const CARD_MAX_W = 1640
 const CARD_MAX_H = 900
 const CARD_ASPECT = CARD_MAX_W / CARD_MAX_H
 
-/** Space reserved below the card for the active slide label. */
-const LABEL_RESERVE = 64
+function isMobileLayout() {
+  return window.matchMedia('(max-width: 768px)').matches
+}
+
+function getLabelReserve() {
+  return isMobileLayout() ? 104 : 64
+}
 
 function getLayout(container: HTMLElement): LayoutDimensions {
   const w = container.offsetWidth
-  const h = container.offsetHeight - LABEL_RESERVE
+  const h = container.offsetHeight - getLabelReserve()
+  const mobile = isMobileLayout()
 
-  let cW = Math.min(w * 0.84, CARD_MAX_W)
+  let cW = Math.min(w * (mobile ? 0.94 : 0.84), CARD_MAX_W)
   let cH = cW / CARD_ASPECT
 
-  if (cH > Math.min(h * 0.88, CARD_MAX_H)) {
-    cH = Math.min(h * 0.88, CARD_MAX_H)
+  if (cH > Math.min(h * (mobile ? 0.92 : 0.88), CARD_MAX_H)) {
+    cH = Math.min(h * (mobile ? 0.92 : 0.88), CARD_MAX_H)
     cW = cH * CARD_ASPECT
   }
 
@@ -50,7 +56,7 @@ function computeSlideLayout(
   const { w, h, cW, cH } = dims
   const cx = w / 2
   const cy = h / 2
-  const stepX = cW * 0.55
+  const stepX = cW * (w < 520 ? 0.4 : 0.55)
   const angleY = 18
 
   const delta = ((index - current) % total + total) % total
