@@ -36,11 +36,13 @@ export function ProjectPage() {
             <h1 className="post-title">{project.title}</h1>
             <p className="post-subtitle">{project.subtitle}</p>
             <div className="post-meta">
-              <span className="post-tag">{category}</span>
-              <span className="post-meta-sep" aria-hidden="true">
-                ·
-              </span>
-              <span className="post-date">{project.date}</span>
+              <div className="post-meta-pill">
+                <span className="post-tag">{category}</span>
+                <span className="post-meta-sep" aria-hidden="true">
+                  ·
+                </span>
+                <span className="post-date">{project.date}</span>
+              </div>
             </div>
           </header>
 
