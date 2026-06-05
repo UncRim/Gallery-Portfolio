@@ -818,6 +818,33 @@ body {
   color: var(--text-primary);
 }
 
+.post-content h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin: 32px 0 12px;
+  color: var(--text-primary);
+}
+
+.post-subsection + .post-subsection {
+  margin-top: 8px;
+}
+
+.post-process-block {
+  margin-bottom: 20px;
+}
+
+.post-process-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px !important;
+}
+
 .post-content p {
   margin-bottom: 20px;
 }

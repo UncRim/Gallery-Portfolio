@@ -11,9 +11,20 @@ export type PatternType =
   | 'lines'
   | 'radial'
 
+export interface ProjectSectionBlock {
+  label: string
+  text: string
+}
+
+export interface ProjectSectionSubsection {
+  title: string
+  blocks: ProjectSectionBlock[]
+}
+
 export interface ProjectSection {
   title: string
-  paragraphs: string[]
+  paragraphs?: string[]
+  subsections?: ProjectSectionSubsection[]
 }
 
 export interface ProjectResult {
@@ -82,7 +93,7 @@ const rawProjectDetails: RawProject[] = [
     coverVideo: '/videos/higher-ed-spatial-web-concept.mp4',
     role: 'Product Designer (UX/UI & WebGL Prototype)',
     problem:
-      'Elite alumni suffer from scroll fatigue. A standard 2D webpage fails to convey the scale of architectural projects or the prestige of institutional research, resulting in low engagement and missed funding opportunities.',
+      'The Concept: If we lock high-value institutional data behind an "Authenticated Spatial Vault," we can flip the psychology of the user from a passive reader to an exclusive insider.\n\nThe "Macrodata" Aesthetic: Leveraging a minimalist, "Severance"-style void environment to focus the user\'s absolute attention on the 3D data and architectural models, eliminating the visual clutter of standard university websites.',
     results: [
       {
         title: 'Zero-download access',
@@ -106,23 +117,84 @@ const rawProjectDetails: RawProject[] = [
     sections: [
       {
         title: 'The Iterative Process & UX Refinements',
-        paragraphs: [
-          'The Concept: If we lock high-value institutional data behind an "Authenticated Spatial Vault," we can flip the psychology of the user from a passive reader to an exclusive insider.',
-          'The "Macrodata" Aesthetic: Leveraging a minimalist, "Severance"-style void environment to focus the user\'s absolute attention on the 3D data and architectural models.',
+        subsections: [
+          {
+            title: 'Iteration 1: The Conceptual Void & Social Proof',
+            blocks: [
+              {
+                label: 'Initial State',
+                text: 'Built an infinite, pitch-black WebGL grid with floating abstract math geometries. Explored "ghost avatars" (proximity chat) to simulate the networking aspect of alumni events.',
+              },
+              {
+                label: 'The Pivot',
+                text: 'The sci-fi aesthetic was too alienating for an academic institution.',
+              },
+            ],
+          },
+          {
+            title: 'Iteration 2: Architectural Grounding & Chiaroscuro Lighting',
+            blocks: [
+              {
+                label: 'The Problem',
+                text: 'The pure white 3D objects were blowing out the camera exposure, and the global lighting washed out the contrast.',
+              },
+              {
+                label: 'The Solution',
+                text: 'Transitioned to an "Architectural Exhibition" vibe. Replaced abstract shapes with 3D building maquettes. Applied a warm, matte "Clay/Sand" material to retain detail without blinding the user. Tightened the WebGL spotlights to mimic theatrical staging, guiding the user\'s eye organically.',
+              },
+            ],
+          },
+          {
+            title: 'Iteration 3: Solving Spatial Fatigue (The UI Bridge)',
+            blocks: [
+              {
+                label: 'The Problem',
+                text: 'Forcing non-gamers to manually navigate a 3D space causes drop-off. Furthermore, opening a 400px sidebar covered the 3D object, ruining the visual balance.',
+              },
+              {
+                label: 'The Solution',
+                text: 'Programmed a dynamic camera.setViewOffset() to perfectly re-center the 3D model whenever the 2D UI drawer opened. Introduced the [ NEXT PROJECT ➔ ] spatial arrow to create a guided, cinematic tour without requiring manual camera panning.',
+              },
+            ],
+          },
+          {
+            title: 'Iteration 4: The Macro-to-Micro "Dive" (Virtual Tour)',
+            blocks: [
+              {
+                label: 'The Problem',
+                text: 'How to show the interior of a building without crashing the browser with heavy 3D interior assets?',
+              },
+              {
+                label: 'The Solution',
+                text: 'Engineered a cinematic camera-dive. Clicking "View Virtual Tour" swoops the camera into the 3D clay model, triggers a seamless fade-to-black, and launches a full-screen architectural video overlay—keeping the user trapped in the immersion while pushing the primary [ BECOME A RESEARCH MENTOR ] conversion button.',
+              },
+            ],
+          },
         ],
       },
-      {
-        title: 'Iteration 1 — The Conceptual Void',
-        paragraphs: [
-          'Built an infinite, pitch-black WebGL grid with floating abstract math geometries. The sci-fi aesthetic was too alienating for an academic institution — we pivoted.',
+    ],
+    media: [
+      buildGalleryBlock(
+        [
+          {
+            src: '/projects/higher-ed/architectural-exhibition.png',
+            alt: 'Architectural exhibition hall with three building maquettes on lit pedestals',
+          },
+          {
+            src: '/projects/higher-ed/struppa-research-park-detail.png',
+            alt: 'Daniele C. Struppa Research Park detail drawer with funding stats and mentor CTA',
+          },
+          {
+            src: '/projects/higher-ed/fowler-innovation-lab-detail.png',
+            alt: 'Fowler School of Innovation Lab detail drawer with re-centered 3D model and next-project navigation',
+          },
+          {
+            src: '/projects/higher-ed/virtual-tour-interior.png',
+            alt: 'Virtual tour interior view with cinematic clay model dive and research mentor conversion CTA',
+          },
         ],
-      },
-      {
-        title: 'Iteration 4 — The Macro-to-Micro Dive',
-        paragraphs: [
-          'Engineered a cinematic camera-dive: clicking "View Virtual Tour" swoops into the 3D clay model, fades to black, and launches a full-screen architectural video overlay.',
-        ],
-      },
+        'Spatial WebGL prototype screens',
+      ),
     ],
     framerUrl: 'https://denelsenuix.framer.website/projects/higher-ed-concept',
     liveUrl: 'https://the-chapman-alumni-vault-concept.netlify.app/',

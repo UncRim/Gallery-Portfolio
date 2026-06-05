@@ -72,8 +72,19 @@ export function ProjectPage() {
             {project.sections.map((section) => (
               <section key={section.title}>
                 <h2>{section.title}</h2>
-                {section.paragraphs.map((paragraph) => (
+                {section.paragraphs?.map((paragraph) => (
                   <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                ))}
+                {section.subsections?.map((subsection) => (
+                  <div className="post-subsection" key={subsection.title}>
+                    <h3>{subsection.title}</h3>
+                    {subsection.blocks.map((block) => (
+                      <div className="post-process-block" key={block.label}>
+                        <p className="post-process-label">{block.label}</p>
+                        <p>{block.text}</p>
+                      </div>
+                    ))}
+                  </div>
                 ))}
               </section>
             ))}

@@ -12,7 +12,11 @@ export function FactsCards({ role, problem }: FactsCardsProps) {
       </article>
       <article className="post-fact-card">
         <h2 className="post-fact-label">Problem</h2>
-        <p className="post-fact-text">{problem}</p>
+        {problem.split('\n\n').map((paragraph) => (
+          <p className="post-fact-text" key={paragraph.slice(0, 48)}>
+            {paragraph}
+          </p>
+        ))}
       </article>
     </section>
   )
