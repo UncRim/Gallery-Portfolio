@@ -94,9 +94,7 @@ export function ProjectPage() {
                   <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                 ))}
                 {section.subsections && section.subsections.length > 0 && (
-                  <div className="post-iterations-wrap">
-                    <IterationCards subsections={section.subsections} />
-                  </div>
+                  <IterationCards subsections={section.subsections} />
                 )}
               </section>
             ))}
