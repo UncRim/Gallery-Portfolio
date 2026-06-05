@@ -1,3 +1,4 @@
+import type { SkillId } from './skills'
 import type { MediaBlock } from '../types/media'
 import { buildGalleryBlock } from '../types/media'
 import { getWebflowMedia } from './webflowAssets'
@@ -45,6 +46,7 @@ export interface ProjectDetail {
   coverVideo?: string
   coverLottie?: string
   role: string
+  skills: SkillId[]
   problem: string
   results: ProjectResult[]
   intro: string
@@ -93,6 +95,7 @@ const rawProjectDetails: RawProject[] = [
     coverImage: '/projects/higher-ed/poster.jpg',
     coverVideo: '/videos/higher-ed-spatial-web-concept.mp4',
     role: 'Product Designer (UX/UI & WebGL Prototype)',
+    skills: ['blender', 'gemini', 'cursor', 'figma'],
     problem:
       'The Concept: If we lock high-value institutional data behind an "Authenticated Spatial Vault," we can flip the psychology of the user from a passive reader to an exclusive insider.\n\nThe "Macrodata" Aesthetic: Leveraging a minimalist, "Severance"-style void environment to focus the user\'s absolute attention on the 3D data and architectural models, eliminating the visual clutter of standard university websites.',
     results: [
@@ -214,6 +217,7 @@ const rawProjectDetails: RawProject[] = [
     coverImage: '/projects/ticketmaster/poster.jpg',
     coverVideo: '/videos/ticketmaster-spatial-seat-selection.mp4',
     role: 'Spatial UX Designer · 3D Interaction Design · WebGL Prototyping',
+    skills: ['blender', 'figma', 'cursor'],
     problem:
       'Fans were forced to toggle between abstract 2D seating charts, dense price lists, and tiny, inaccurate preview images. The disjointed experience caused high cognitive load, anxiety over buying a "bad seat," and hesitation that ultimately led to cart abandonment or buyer\'s remorse.',
     results: [
@@ -307,6 +311,7 @@ const rawProjectDetails: RawProject[] = [
     coverVideo: '/videos/safescroll.mp4',
     webflowGalleryKey: 'safescroll',
     role: 'Product Designer',
+    skills: ['figma', 'chatgpt'],
     problem:
       '53% of Gen Z and 46% of millennials admit to doomscrolling regularly. Current wellness apps focus on blocking or mindfulness — not integrated, psychologically informed solutions.',
     results: [
@@ -353,6 +358,7 @@ const rawProjectDetails: RawProject[] = [
     coverImage: '/projects/katz/hero-and-proof.png',
     coverVideo: '/videos/katz-master-in-ai.mp4',
     role: 'Web Designer (UX/UI) · IA · Content Strategy · A11y',
+    skills: ['figma', 'drupal', 'chatgpt'],
     problem:
       'Prospective students couldn\'t quickly understand the program\'s value, outcomes, or next steps. The page felt dense and brochure-like.',
     results: [
@@ -422,6 +428,7 @@ const rawProjectDetails: RawProject[] = [
       'https://cdn.prod.website-files.com/678bf7b74db9aadd19501ce9/6921683e01fc00d35b719032_Case%20Study%20Cover%20-%201.png',
     webflowGalleryKey: 't-shaped-reshaped',
     role: 'Lead UX/UI Designer · HubSpot CMS · Analytics (GA4/Hotjar)',
+    skills: ['hubspot', 'figma', 'chatgpt'],
     problem:
       'Prospects couldn\'t answer: What do you do? Does it work? What\'s my next step? CTAs were buried and load times sluggish.',
     results: [

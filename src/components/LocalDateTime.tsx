@@ -1,18 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
-function formatLocalDateTime(date: Date) {
-  const datePart = new Intl.DateTimeFormat(undefined, {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-  }).format(date)
+function getLocationLabel() {
+  try {
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    const city = timeZone.includes('/') ? timeZone.split('/').pop()! : timeZone
+    return city.replace(/_/g, ' ')
+  } catch {
+    return 'Local'
+  }
+}
 
+function formatLocationTime(date: Date, location: string) {
   const timePart = new Intl.DateTimeFormat(undefined, {
     hour: 'numeric',
     minute: '2-digit',
   }).format(date)
 
-  return `${datePart} · ${timePart}`
+  return `${location} · ${timePart}`
 }
 
 interface LocalDateTimeProps {
@@ -20,6 +24,7 @@ interface LocalDateTimeProps {
 }
 
 export function LocalDateTime({ className }: LocalDateTimeProps) {
+  const location = useMemo(() => getLocationLabel(), [])
   const [now, setNow] = useState(() => new Date())
 
   useEffect(() => {
@@ -30,7 +35,7 @@ export function LocalDateTime({ className }: LocalDateTimeProps) {
 
   return (
     <time className={className} dateTime={now.toISOString()}>
-      {formatLocalDateTime(now)}
+      {formatLocationTime(now, location)}
     </time>
   )
 }

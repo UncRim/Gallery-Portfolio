@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { FactsCards } from '../components/project/FactsCards'
+import { IterationCards } from '../components/project/IterationCards'
 import { LivePrototypeCta } from '../components/project/LivePrototypeCta'
 import { MediaBlockView, PostCover } from '../components/project/PostMedia'
 import { ResultsCards } from '../components/project/ResultsCards'
@@ -61,7 +62,11 @@ export function ProjectPage() {
           )}
 
           <div className="post-facts-wrap">
-            <FactsCards role={project.role} problem={project.problem} />
+            <FactsCards
+              role={project.role}
+              skills={project.skills}
+              problem={project.problem}
+            />
           </div>
 
           <div className="post-content">
@@ -81,17 +86,11 @@ export function ProjectPage() {
                 {section.paragraphs?.map((paragraph) => (
                   <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                 ))}
-                {section.subsections?.map((subsection) => (
-                  <div className="post-subsection" key={subsection.title}>
-                    <h3>{subsection.title}</h3>
-                    {subsection.blocks.map((block) => (
-                      <div className="post-process-block" key={block.label}>
-                        <p className="post-process-label">{block.label}</p>
-                        <p>{block.text}</p>
-                      </div>
-                    ))}
+                {section.subsections && section.subsections.length > 0 && (
+                  <div className="post-iterations-wrap">
+                    <IterationCards subsections={section.subsections} />
                   </div>
-                ))}
+                )}
               </section>
             ))}
 

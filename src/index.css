@@ -923,7 +923,8 @@ body {
   }
 
   [data-theme='dark'] .post-fact-card::before,
-  [data-theme='dark'] .post-result-card::before {
+  [data-theme='dark'] .post-result-card::before,
+  [data-theme='dark'] .post-iteration-card::before {
     animation: none;
     opacity: 0.4;
     filter: none;
@@ -1014,7 +1015,6 @@ body {
 
 .post-header {
   margin-bottom: 40px;
-  text-align: center;
 }
 
 .post-title {
@@ -1025,6 +1025,7 @@ body {
   line-height: 1.15;
   margin-bottom: 12px;
   color: var(--text-primary);
+  text-align: center;
 }
 
 .post-subtitle {
@@ -1034,6 +1035,7 @@ body {
   line-height: 1.75;
   color: var(--text-secondary);
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .post-meta {
@@ -1155,7 +1157,7 @@ body {
   font-weight: 400;
   line-height: 1.75;
   color: var(--text-secondary);
-  text-align: center;
+  text-align: left;
 }
 
 .post-content h2 {
@@ -1166,7 +1168,7 @@ body {
   line-height: 1.3;
   margin: 48px 0 16px;
   color: var(--text-primary);
-  text-align: center;
+  text-align: left;
 }
 
 .post-content h3 {
@@ -1177,25 +1179,84 @@ body {
   line-height: 1.4;
   margin: 32px 0 12px;
   color: var(--text-primary);
-  text-align: center;
+  text-align: left;
 }
 
-.post-subsection + .post-subsection {
-  margin-top: 8px;
+.post-iterations-wrap {
+  width: 100vw;
+  margin: 8px 0 40px calc(50% - 50vw);
+  padding: 0 24px;
 }
 
-.post-process-block {
-  margin-bottom: 20px;
+.post-iterations {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
-.post-process-label {
+.post-iteration-card {
+  position: relative;
+  background: var(--result-card-bg);
+  border: 1px solid var(--card-stroke);
+  border-radius: 4px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  isolation: isolate;
+  text-align: left;
+}
+
+.post-iteration-badge {
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 6px !important;
+  margin: 0;
+}
+
+.post-iteration-title {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.post-iteration-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.post-iteration-block + .post-iteration-block {
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.post-iteration-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 8px;
+}
+
+.post-iteration-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .post-content p {
@@ -1208,7 +1269,7 @@ body {
   font-weight: 400;
   line-height: 1.75;
   color: var(--text-secondary);
-  text-align: center;
+  text-align: left;
 }
 
 .post-content ul {
@@ -1253,6 +1314,7 @@ body {
   flex-direction: column;
   gap: 14px;
   isolation: isolate;
+  text-align: left;
 }
 
 .post-fact-label {
@@ -1263,6 +1325,59 @@ body {
   text-transform: uppercase;
   color: var(--accent);
   margin: 0;
+}
+
+.post-fact-skills {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.post-fact-skills-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+.post-fact-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-fact-skill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.post-fact-skill:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-border);
+}
+
+.post-fact-skill svg {
+  display: block;
+  width: 22px;
+  height: 22px;
 }
 
 .post-fact-text {
@@ -1287,7 +1402,7 @@ body {
   text-transform: uppercase;
   color: var(--text-faint);
   margin: 0 0 20px;
-  text-align: center;
+  text-align: left;
 }
 
 .post-results-grid {
@@ -1311,13 +1426,15 @@ body {
 }
 
 [data-theme='dark'] .post-fact-card,
-[data-theme='dark'] .post-result-card {
+[data-theme='dark'] .post-result-card,
+[data-theme='dark'] .post-iteration-card {
   border-color: rgba(62, 207, 142, 0.14);
   box-shadow: none;
 }
 
 [data-theme='dark'] .post-fact-card::before,
-[data-theme='dark'] .post-result-card::before {
+[data-theme='dark'] .post-result-card::before,
+[data-theme='dark'] .post-iteration-card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1384,7 +1501,7 @@ body {
   margin: 48px 0;
   padding: 24px 0 24px 24px;
   border-left: 4px solid var(--text-primary);
-  text-align: center;
+  text-align: left;
 }
 
 .post-content blockquote p {
@@ -1399,7 +1516,7 @@ body {
 }
 
 .post-source-links {
-  text-align: center;
+  text-align: left;
   font-size: 14px;
   margin-top: 32px;
 }
@@ -1488,7 +1605,7 @@ body {
 
 .post-nav-all {
   display: block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 24px;
   font-size: 14px;
   font-weight: 500;
@@ -1626,27 +1743,28 @@ body {
   }
 
   .post-header {
-    text-align: left;
     margin-bottom: 32px;
   }
 
   .post-title {
     font-size: clamp(32px, 9vw, 44px);
     line-height: 1.2;
+    text-align: center;
   }
 
   .post-subtitle {
     font-size: 17px;
     margin-bottom: 16px;
+    text-align: left;
   }
 
   .post-meta {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .post-back {
     display: block;
-    text-align: center;
+    text-align: left;
     margin-bottom: 24px;
   }
 
@@ -1670,6 +1788,14 @@ body {
 
   .post-facts {
     grid-template-columns: 1fr;
+  }
+
+  .post-iterations {
+    grid-template-columns: 1fr;
+  }
+
+  .post-iteration-card {
+    padding: 24px 20px;
   }
 
   .post-fact-card {
