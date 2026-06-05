@@ -443,12 +443,62 @@ const rawProjectDetails: RawProject[] = [
       },
     ],
     intro:
-      'T Shaped runs evidence-based leadership sprints. I rebuilt their site in HubSpot CMS — reframing the story around outcomes and proof, engineering a faster path from curiosity to "Book Fit Call."',
+      'T Shaped runs leadership sprints for executives — but their website buried the point. Prospects couldn\'t answer three basic questions: what do you do, does it work, and what should I do next?\n\nI rebuilt the entire site in HubSpot CMS — restructuring the story around outcomes, surfacing proof early, and cutting the path from first visit to booked Fit Call.',
     sections: [
       {
         title: 'From static brochure to booking engine',
         paragraphs: [
-          'Behavioral data showed visitors hovering on services and testimonials while skipping long prose. We rebuilt around four questions prospects actually ask.',
+          'Leaders don\'t buy "strategy websites." They buy clarity + proof. Behavioral data (Hotjar) showed visitors hovering on services and testimonials while skipping long prose. We reframed the page around the four questions prospects actually ask: What will I learn? Who\'s teaching this? What can I do after? Where\'s the proof? Then we rebuilt in HubSpot with modules that map to that decision path and a single, unmissable next step.',
+        ],
+        subsections: [
+          {
+            title: 'Approach',
+            blocks: [
+              {
+                label: 'Discovery & data',
+                text: 'Audit GA4 events, Hotjar heatmaps/scroll maps, GSC; identify friction and dead zones.',
+              },
+              {
+                label: 'Story & IA',
+                text: 'Translate outcomes into a skimmable narrative; map a shortest-path funnel to "Fit Call."',
+              },
+              {
+                label: 'Wireframes → Figma components',
+                text: 'Build a reusable section library (hero, tiles, proof, FAQs, capture, footer).',
+              },
+              {
+                label: 'Content & microcopy',
+                text: 'Outcome-led headlines, plain-language FAQs, social-proof pull-quotes.',
+              },
+              {
+                label: 'Build in HubSpot',
+                text: 'Drag-and-drop modules, schema, redirects, perf budgets, and QA.',
+              },
+              {
+                label: 'Instrumentation & experiments',
+                text: 'Event tagging, scroll-depth, CTA variants, and module order tests.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Solution (what I changed)',
+        paragraphs: [
+          'Outcome-first hero with one primary action ("Book 15-min Fit Call").',
+          'Service Library (6 tiles) to self-select the right sprint—highly scannable entry points.',
+          'Video-first testimonials (leaders speaking to outcomes) for instant proof.',
+          'Mid-page micro-CTA for visitors convinced early; FAQ accordion to kill objections.',
+          'Newsletter capture ("Performance Review Playbook") as a low-friction nurture.',
+          'Trust marquees (logos + benefit bullets) near decision points.',
+          'Modular HubSpot sections so marketing can reorder/A-B test without dev.',
+          'Performance passes (SVG, compressed media, CDN) to drop first contentful paint.',
+        ],
+      },
+      {
+        title: 'A better beginning',
+        paragraphs: [
+          'This wasn\'t a paint job, it was a behavior redesign. By replacing generic claims with outcomes, proof, and one decisive action, we reduced cognitive load and gave buyers control. Modular sections let marketing iterate without waiting for dev, while analytics close the loop on what actually moves people. The real win: a site that respects attention, answers fast, and converts curiosity into real conversations.',
         ],
       },
     ],

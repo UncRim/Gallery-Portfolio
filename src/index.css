@@ -8,6 +8,8 @@
 
 :root,
 [data-theme='light'] {
+  --font-sans: 'Syne', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
   color-scheme: light;
   --bg-shell: #e8e6e1;
   --bg-surface: #ffffff;
@@ -85,7 +87,8 @@ body,
 body {
   background: var(--bg-shell);
   color: var(--text-primary);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 400;
   transition:
     background 0.35s ease,
     color 0.35s ease;
@@ -237,34 +240,55 @@ body {
 
 .logo-name {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-primary);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
 .logo-role {
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: 500;
   color: var(--text-muted);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   line-height: 1.2;
+}
+
+.home-hero-wrap {
+  text-align: center;
+  padding: 12px 32px 4px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.home-hero {
+  margin: 0 0 8px;
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.home-hero-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
 }
 
 .home-tagline {
   text-align: center;
   margin: 0;
-  padding: 16px 32px 8px;
-  flex-shrink: 0;
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(20px, 2.8vw, 32px);
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.8vw, 17px);
   font-weight: 400;
-  font-style: italic;
-  color: var(--text-primary);
-  letter-spacing: -0.03em;
-  line-height: 1.25;
-  position: relative;
-  z-index: 10;
+  color: var(--text-muted);
+  letter-spacing: -0.01em;
+  line-height: 1.5;
 }
 
 .stage {
@@ -421,6 +445,7 @@ body {
 
 .slide-category,
 .slide-year {
+  font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -435,7 +460,7 @@ body {
 }
 
 .slide-title {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
   font-weight: 400;
   color: var(--text-primary);
@@ -572,9 +597,16 @@ body {
     justify-content: flex-end;
   }
 
+  .home-hero-wrap {
+    padding: 8px 24px 0;
+  }
+
+  .home-hero {
+    font-size: clamp(24px, 7vw, 36px);
+  }
+
   .home-tagline {
-    padding: 12px 24px 4px;
-    font-size: clamp(18px, 5vw, 26px);
+    font-size: 14px;
   }
 
   .theme-toggle-label {
@@ -696,6 +728,7 @@ body {
 .site-header-nav a {
   text-decoration: none;
   color: var(--text-muted);
+  font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
   transition: color 0.2s;
@@ -726,12 +759,13 @@ body {
 
 .post-header {
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .post-title {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(36px, 5vw, 52px);
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: clamp(32px, 4.5vw, 44px);
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin-bottom: 12px;
@@ -739,8 +773,10 @@ body {
 }
 
 .post-subtitle {
-  font-size: 20px;
-  line-height: 1.5;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
   color: var(--text-secondary);
   margin-bottom: 20px;
 }
@@ -749,6 +785,7 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
   font-size: 14px;
   color: var(--text-faint);
@@ -756,6 +793,7 @@ body {
 
 .post-meta-pill .post-tag,
 .post-meta-pill .post-date {
+  font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -857,29 +895,34 @@ body {
 .post-content {
   max-width: 680px;
   margin: 0 auto;
-  font-size: 18px;
-  line-height: 1.7;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
   color: var(--text-secondary);
+  text-align: center;
 }
 
 .post-content h2 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 28px;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 500;
   letter-spacing: -0.02em;
-  line-height: 1.25;
+  line-height: 1.3;
   margin: 48px 0 16px;
   color: var(--text-primary);
+  text-align: center;
 }
 
 .post-content h3 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
   letter-spacing: -0.02em;
-  line-height: 1.35;
+  line-height: 1.4;
   margin: 32px 0 12px;
   color: var(--text-primary);
+  text-align: center;
 }
 
 .post-subsection + .post-subsection {
@@ -891,9 +934,10 @@ body {
 }
 
 .post-process-label {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 6px !important;
@@ -904,9 +948,12 @@ body {
 }
 
 .post-lead {
-  font-size: 20px;
-  line-height: 1.65;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
   color: var(--text-secondary);
+  text-align: center;
 }
 
 .post-content ul {
@@ -954,18 +1001,20 @@ body {
 }
 
 .post-fact-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
   margin: 0;
 }
 
 .post-fact-text {
+  font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.75;
   color: var(--text-secondary);
   margin: 0;
 }
@@ -976,13 +1025,14 @@ body {
 }
 
 .post-results-heading {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-faint);
   margin: 0 0 20px;
+  text-align: center;
 }
 
 .post-results-grid {
@@ -1055,18 +1105,21 @@ body {
 }
 
 .post-result-title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(18px, 2vw, 24px);
-  font-weight: 600;
-  line-height: 1.2;
+  font-family: var(--font-sans);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin: 0;
 }
 
 .post-result-description {
-  font-size: 15px;
-  line-height: 1.55;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
   color: var(--text-muted);
   margin: 0;
   flex: 1;
@@ -1076,18 +1129,22 @@ body {
   margin: 48px 0;
   padding: 24px 0 24px 24px;
   border-left: 4px solid var(--text-primary);
+  text-align: center;
 }
 
 .post-content blockquote p {
-  font-size: 24px;
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 400;
+  font-style: italic;
   line-height: 1.35;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   margin: 0;
   color: var(--text-primary);
 }
 
 .post-source-links {
+  text-align: center;
   font-size: 14px;
   margin-top: 32px;
 }
@@ -1215,9 +1272,10 @@ body {
 
 .post-nav-label {
   display: block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-faint);
   margin-bottom: 6px;
@@ -1313,7 +1371,7 @@ body {
   }
 
   .post-header {
-    text-align: center;
+    text-align: left;
     margin-bottom: 32px;
   }
 
@@ -1328,7 +1386,7 @@ body {
   }
 
   .post-meta {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .post-back {
@@ -1337,13 +1395,22 @@ body {
     margin-bottom: 24px;
   }
 
+  .post-content {
+    text-align: left;
+    font-size: 16px;
+  }
+
   .post-content h2 {
     font-size: 22px;
-    text-align: center;
+    text-align: left;
+  }
+
+  .post-content h3 {
+    text-align: left;
   }
 
   .post-lead {
-    text-align: center;
+    text-align: left;
   }
 
   .post-facts {
@@ -1359,7 +1426,7 @@ body {
   }
 
   .post-results-heading {
-    text-align: center;
+    text-align: left;
   }
 
   .post-results-grid {
@@ -1375,15 +1442,15 @@ body {
     border-left: none;
     border-top: 3px solid var(--text-primary);
     padding: 24px 0 0;
-    text-align: center;
-  }
-
-  .post-content {
-    font-size: 16px;
+    text-align: left;
   }
 
   .post-content blockquote p {
     font-size: 20px;
+  }
+
+  .post-source-links {
+    text-align: left;
   }
 
   .post-gallery-grid {
