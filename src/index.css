@@ -278,13 +278,6 @@ body {
   white-space: nowrap;
 }
 
-.logo-role--title {
-  display: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-variant-numeric: normal;
-}
-
 .header-cta {
   display: none;
   align-items: center;
@@ -382,7 +375,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
 }
 
 .mobile-carousel-heading {
@@ -393,7 +386,17 @@ body {
   text-transform: uppercase;
   color: var(--text-faint);
   padding: 0 16px;
-  margin: 0;
+  margin: 0 0 16px;
+}
+
+.mobile-carousel-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 4px;
+  padding: 24px 0 28px;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .mobile-carousel-track {
@@ -418,6 +421,9 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .mobile-carousel-card {
@@ -454,7 +460,7 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 0 6px;
+  margin: 0;
 }
 
 .mobile-carousel-overlay-title {
@@ -464,7 +470,7 @@ body {
   letter-spacing: -0.02em;
   line-height: 1.15;
   color: #fff;
-  margin: 0;
+  margin: 0 0 6px;
 }
 
 .mobile-carousel-slide:not(.is-active) .mobile-carousel-card .slide-inner {
@@ -473,10 +479,10 @@ body {
 
 .mobile-carousel-footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
   padding: 0 2px;
 }
 
@@ -488,10 +494,9 @@ body {
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin: 0;
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -504,8 +509,8 @@ body {
   position: static;
   transform: none;
   justify-content: center;
-  margin-top: 6px;
-  padding-bottom: 2px;
+  margin: 0;
+  padding: 0 16px 4px;
 }
 
 .mobile-carousel-dots .dot.active {
@@ -827,17 +832,8 @@ body {
     display: inline-flex;
   }
 
-  .logo-role--time {
-    display: none;
-  }
-
-  .logo-role--title {
-    display: block;
-    font-size: 9px;
-  }
-
   .home-hero-wrap {
-    padding: 12px 16px 8px;
+    padding: 28px 16px 12px;
     text-align: left;
   }
 
@@ -845,9 +841,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-size: clamp(34px, 9vw, 44px);
-    margin-bottom: 8px;
-    line-height: 1.02;
+    font-size: clamp(42px, 12vw, 56px);
+    margin-bottom: 12px;
+    line-height: 0.98;
   }
 
   .home-hero-line {
@@ -865,17 +861,17 @@ body {
   .home-tagline {
     display: block;
     text-align: left;
-    font-size: 14px;
-    line-height: 1.45;
+    font-size: clamp(17px, 4.8vw, 20px);
+    line-height: 1.4;
     padding: 0;
-    max-width: 28ch;
+    max-width: 22ch;
   }
 
   .stage--mobile {
     flex: 0 0 auto;
     align-items: stretch;
     justify-content: flex-start;
-    padding: 8px 0 10px;
+    padding: 12px 0 20px;
     min-height: 0;
     overflow: visible;
     cursor: default;
@@ -894,7 +890,12 @@ body {
     max-height: min(44vh, 340px);
   }
 
-  .mobile-carousel-footer .slide-meta {
+  .mobile-carousel-slider {
+    padding: 20px 0 24px;
+    margin-top: 8px;
+  }
+
+  .mobile-carousel-meta-pill {
     padding: 5px 12px;
   }
 
@@ -933,7 +934,11 @@ body {
 
 @media (max-width: 480px) {
   .home-hero {
-    font-size: 34px;
+    font-size: clamp(40px, 11.5vw, 48px);
+  }
+
+  .home-tagline {
+    font-size: 17px;
   }
 
   .mobile-carousel-card .slide-inner {

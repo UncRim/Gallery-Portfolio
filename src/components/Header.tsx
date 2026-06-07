@@ -14,8 +14,7 @@ export function Header() {
         </div>
         <div className="logo-text">
           <span className="logo-name">Denelsen D</span>
-          <LocalDateTime className="logo-role logo-role--time" />
-          <span className="logo-role logo-role--title">Product Designer</span>
+          <LocalDateTime className="logo-role" />
         </div>
       </Link>
       <div className="header-actions">
