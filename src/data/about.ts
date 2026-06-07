@@ -3,6 +3,9 @@ export const aboutHeadshot = '/about/denelsen-headshot.png'
 export const commencementSpeechUrl =
   'https://www.youtube.com/watch?v=jqx_WQXyJdg&t=3s'
 
+export const researchPaperUrl =
+  'https://www.researchgate.net/publication/399256742_Comparative_Study_of_Cattle_Producer_Challenges_in_the_US_and_Zimbabwe_Identifying_Opportunities_for_AI-Enabled_Extension_and_Digital_Decision_Support?channel=doi&linkId=695568c67e61d05b5314facf&showFulltext=true'
+
 export const aboutIntro = [
   'I’m Denelsen, a product designer with a foundation in IT and a focus on turning complex systems into clear, human-centered experiences. I started my career troubleshooting platforms and workflows, which taught me something I still design around today: most “technical” problems are really clarity problems. Now I build interfaces that make the next step obvious, whether the user is a student, a customer, or a team inside a fast-moving organization.',
   'My approach blends empathy with structure. I work closely with cross-functional teams to uncover what’s actually broken, map the user journey, and move from research to wireframes to high-fidelity prototypes in Figma. I care about design systems, accessibility, and the details that make products feel reliable: thoughtful hierarchy, consistent components, and states that handle real-world edge cases.',

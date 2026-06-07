@@ -1296,17 +1296,13 @@ body {
   min-width: 0;
 }
 
-.about-hero-label {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-faint);
+.about-hero-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.about-commencement-link {
+.about-hero-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1328,11 +1324,21 @@ body {
     transform 0.2s ease;
 }
 
-.about-commencement-link:hover,
-.about-commencement-link:focus-visible {
+.about-hero-link:hover,
+.about-hero-link:focus-visible {
   color: var(--accent);
   border-color: color-mix(in srgb, var(--accent) 35%, var(--border-subtle));
   transform: translateY(-1px);
+}
+
+.about-hero-label {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
 }
 
 .about-intro p + p {

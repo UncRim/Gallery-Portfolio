@@ -4,7 +4,7 @@ import { TestimonialsStrip } from '../components/TestimonialsStrip'
 import { ExperienceAccordion } from '../components/about/ExperienceAccordion'
 import { AboutIntroTyping } from '../components/about/AboutIntroTyping'
 import { Hicon } from '../components/icons/Hicon'
-import { aboutHeadshot, commencementSpeechUrl } from '../data/about'
+import { aboutHeadshot, commencementSpeechUrl, researchPaperUrl } from '../data/about'
 
 export function AboutPage() {
   return (
@@ -30,15 +30,26 @@ export function AboutPage() {
 
           <div className="about-hero-copy">
             <p className="about-hero-label">Graduation · 2026</p>
-            <a
-              href={commencementSpeechUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="about-commencement-link"
-            >
-              Watch my commencement speech
-              <Hicon name="external-link" size={16} aria-hidden />
-            </a>
+            <div className="about-hero-links">
+              <a
+                href={commencementSpeechUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="about-hero-link"
+              >
+                Watch my commencement speech
+                <Hicon name="external-link" size={16} aria-hidden />
+              </a>
+              <a
+                href={researchPaperUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="about-hero-link"
+              >
+                Read my research paper
+                <Hicon name="external-link" size={16} aria-hidden />
+              </a>
+            </div>
           </div>
         </section>
 
