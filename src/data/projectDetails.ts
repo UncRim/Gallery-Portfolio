@@ -303,7 +303,7 @@ const rawProjectDetails: RawProject[] = [
   {
     id: 'safescroll',
     slug: 'safescroll',
-    title: 'Safe Scroll',
+    title: 'Safescroll for doomscrolling',
     tag: 'Concept · 2025',
     subtitle: 'Reducing Doomscrolling',
     date: '2025',
@@ -469,7 +469,7 @@ const rawProjectDetails: RawProject[] = [
   {
     id: 'tshaped-redesigned',
     slug: 'tshaped-redesigned',
-    title: 'Website Rebuild — From strategy site to a conversion system',
+    title: 'From a strategy website to a conversion system',
     tag: 'Web Redesign · 2025',
     subtitle: 'Clarity first. Proof fast. Booked calls, not brochure clicks.',
     date: '2025',

@@ -135,22 +135,6 @@ export function ProjectPage() {
                 <p>{project.insight ?? project.subtitle}</p>
               </blockquote>
             )}
-
-            {(project.framerUrl || project.webflowUrl) && (
-              <p className="post-source-links">
-                {project.framerUrl && (
-                  <a href={project.framerUrl} target="_blank" rel="noreferrer">
-                    View on Framer
-                  </a>
-                )}
-                {project.framerUrl && project.webflowUrl && ' · '}
-                {project.webflowUrl && (
-                  <a href={project.webflowUrl} target="_blank" rel="noreferrer">
-                    View on Webflow
-                  </a>
-                )}
-              </p>
-            )}
           </div>
 
           <nav className="post-nav-wrap" aria-label="Project navigation">
