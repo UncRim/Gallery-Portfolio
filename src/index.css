@@ -2582,8 +2582,8 @@ body {
   .post-title {
     font-size: clamp(32px, 9vw, 44px);
     line-height: 1.2;
-    text-align: center;
-    width: auto;
+    text-align: left;
+    width: 100%;
   }
 
   .post-subtitle {
@@ -2598,8 +2598,9 @@ body {
   }
 
   .post-back {
-    display: block;
-    text-align: left;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-bottom: 24px;
   }
 
