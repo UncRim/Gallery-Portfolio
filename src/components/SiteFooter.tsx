@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Hicon } from './icons/Hicon'
 
 const SOCIAL_LINKS = [
@@ -23,12 +24,29 @@ interface SiteFooterProps {
 }
 
 export function SiteFooter({ variant = 'page' }: SiteFooterProps) {
+  const isCard = variant === 'card'
+
   return (
-    <footer className={`site-footer${variant === 'card' ? ' site-footer--card' : ''}`}>
+    <footer className={`site-footer${isCard ? ' site-footer--card' : ''}`}>
       <div className="site-footer-inner">
         <p className="site-footer-tagline">
           Designing experiences that connect, convert and include.
         </p>
+
+        {isCard && (
+          <>
+            <span className="site-footer-sep" aria-hidden="true">
+              |
+            </span>
+            <Link to="/about" className="site-footer-about">
+              About
+            </Link>
+            <span className="site-footer-sep" aria-hidden="true">
+              |
+            </span>
+          </>
+        )}
+
         <nav className="site-footer-social" aria-label="Social links">
           {SOCIAL_LINKS.map((link) => (
             <a

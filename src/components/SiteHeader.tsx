@@ -15,6 +15,7 @@ export function SiteHeader() {
       </Link>
       <nav className="site-header-nav">
         <Link to="/">Projects</Link>
+        <Link to="/about">About</Link>
         <a href="mailto:hello@denelsendandi.com">Contact</a>
         <ThemeToggle />
       </nav>

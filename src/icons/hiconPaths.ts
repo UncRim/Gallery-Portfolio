@@ -12,6 +12,10 @@ export const HICON_ICONS = [
   'moon',
   'sun',
   'chevron-left',
+  'plus',
+  'minus',
+  'map-pin',
+  'building',
 ] as const
 
 export type HiconName = (typeof HICON_ICONS)[number]
@@ -28,4 +32,8 @@ export const HICON_PATHS: Record<HiconName, string> = {
   'moon': `<path d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.171 19 18.1395 17.1814 19 14.2899"/><path d="M19 14C18.8319 14 18.6652 13.9941 18.5 13.9824C12.5 15 9.50001 11.5 12 5"/>`,
   'sun': `<rect x="8" y="8" width="8" height="8" rx="4"/><line x1="12" y1="5" x2="12" y2="3"/><line x1="12" y1="5" x2="12" y2="3"/><line x1="5" y1="12" x2="3" y2="12"/><line x1="7.75739" y1="16.6569" x2="6.34317" y2="18.0711"/><line x1="16.728" y1="17.3137" x2="18.1422" y2="18.7279"/><line x1="12" y1="21" x2="12" y2="19"/><line x1="21" y1="12" x2="19" y2="12"/><line x1="19.071" y1="5.34317" x2="17.6568" y2="6.75738"/><line x1="5.41421" y1="6" x2="6.82843" y2="7.41421"/>`,
   'chevron-left': `<path d="M10 12.4L14.5 17.8"/><path d="M10 12.4L14.5 7.00006"/>`,
+  'plus': `<line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/>`,
+  'minus': `<line x1="6" y1="12" x2="18" y2="12"/>`,
+  'map-pin': `<path d="M12 21s6-4.686 6-10a6 6 0 1 0-12 0c0 5.314 6 10 6 10z"/><circle cx="12" cy="11" r="2"/>`,
+  'building': `<path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/><line x1="10" y1="12" x2="10" y2="12.01"/><line x1="14" y1="12" x2="14" y2="12.01"/><line x1="10" y1="16" x2="10" y2="16.01"/><line x1="14" y1="16" x2="14" y2="16.01"/>`,
 }
