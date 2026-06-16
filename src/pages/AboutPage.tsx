@@ -1,5 +1,6 @@
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
+import { FloatingProjectMenu } from '../components/FloatingProjectMenu'
 import { TestimonialsStrip } from '../components/TestimonialsStrip'
 import { ExperienceAccordion } from '../components/about/ExperienceAccordion'
 import { AboutIntroTyping } from '../components/about/AboutIntroTyping'
@@ -13,7 +14,7 @@ export function AboutPage() {
 
       <main className="about-main">
         <header className="about-header">
-          <h1 className="about-title">About</h1>
+          <h1 className="about-title">About Me</h1>
         </header>
 
         <section className="about-hero" aria-label="Profile">
@@ -63,6 +64,7 @@ export function AboutPage() {
 
       <TestimonialsStrip visibility="desktop" variant="marquee" />
       <SiteFooter />
+      <FloatingProjectMenu variant="about" />
     </div>
   )
 }

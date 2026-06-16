@@ -1,8 +1,10 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { FactsCards } from '../components/project/FactsCards'
+import { FloatingProjectMenu } from '../components/FloatingProjectMenu'
 import { IterationCards } from '../components/project/IterationCards'
 import { LivePrototypeCta } from '../components/project/LivePrototypeCta'
 import { MediaBlockView, PostCover } from '../components/project/PostMedia'
+import { MediaLightboxProvider } from '../components/project/MediaLightbox'
 import { ResultsCards } from '../components/project/ResultsCards'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
@@ -26,7 +28,7 @@ export function ProjectPage() {
 
   return (
     <div className="project-page">
-      <SiteHeader />
+      <SiteHeader compact />
 
       <main className="project-main">
         <article className="post">
@@ -109,7 +111,7 @@ export function ProjectPage() {
             ))}
 
             {project.media && project.media.length > 0 && (
-              <>
+              <MediaLightboxProvider media={project.media} projectTitle={project.title}>
                 <h2>Visuals</h2>
                 {project.media.map((block) => (
                   <MediaBlockView
@@ -118,7 +120,7 @@ export function ProjectPage() {
                     projectTitle={project.title}
                   />
                 ))}
-              </>
+              </MediaLightboxProvider>
             )}
 
             {project.sectionsAfterMedia?.map((section) => (
@@ -157,6 +159,7 @@ export function ProjectPage() {
       </main>
 
       <SiteFooter />
+      <FloatingProjectMenu />
     </div>
   )
 }

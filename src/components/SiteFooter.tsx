@@ -39,7 +39,7 @@ export function SiteFooter({ variant = 'page' }: SiteFooterProps) {
               |
             </span>
             <Link to="/about" className="site-footer-about">
-              About
+              About Me
             </Link>
             <span className="site-footer-sep" aria-hidden="true">
               |

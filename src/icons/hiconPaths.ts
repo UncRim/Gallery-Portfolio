@@ -16,6 +16,7 @@ export const HICON_ICONS = [
   'minus',
   'map-pin',
   'building',
+  'user',
 ] as const
 
 export type HiconName = (typeof HICON_ICONS)[number]
@@ -36,4 +37,5 @@ export const HICON_PATHS: Record<HiconName, string> = {
   'minus': `<line x1="6" y1="12" x2="18" y2="12"/>`,
   'map-pin': `<path d="M12 21s6-4.686 6-10a6 6 0 1 0-12 0c0 5.314 6 10 6 10z"/><circle cx="12" cy="11" r="2"/>`,
   'building': `<path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/><line x1="10" y1="12" x2="10" y2="12.01"/><line x1="14" y1="12" x2="14" y2="12.01"/><line x1="10" y1="16" x2="10" y2="16.01"/><line x1="14" y1="16" x2="14" y2="16.01"/>`,
+  'user': `<circle cx="12" cy="8" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/>`,
 }

@@ -357,8 +357,7 @@ const rawProjectDetails: RawProject[] = [
     date: '2025',
     colors: ['#1a1a2e', '#2a2a5e', '#111130'],
     patternType: 'grid',
-    coverImage: '/projects/katz/hero-and-proof.png',
-    coverVideo: '/videos/katz-master-in-ai.mp4',
+    coverImage: '/projects/katz/cover.gif',
     role: 'Web Designer (UX/UI) · IA · Content Strategy · A11y',
     skills: ['figma', 'drupal', 'chatgpt'],
     problem:
