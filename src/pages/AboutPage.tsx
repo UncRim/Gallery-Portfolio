@@ -10,7 +10,7 @@ import { aboutHeadshot, commencementSpeechUrl, researchPaperUrl } from '../data/
 export function AboutPage() {
   return (
     <div className="about-page project-page">
-      <SiteHeader />
+      <SiteHeader compact />
 
       <main className="about-main">
         <header className="about-header">

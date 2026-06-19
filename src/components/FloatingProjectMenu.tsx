@@ -4,6 +4,30 @@ import { Hicon, type HiconName } from './icons/Hicon'
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/denelsen-dandi/'
 
+function FloatingMenuToggleIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="floating-project-menu-toggle-icon"
+      aria-hidden="true"
+    >
+      {open ? (
+        <path d="M7 7l10 10M17 7L7 17" />
+      ) : (
+        <path d="M6 8h12M6 12h12M6 16h12" />
+      )}
+    </svg>
+  )
+}
+
 type FloatingMenuVariant = 'project' | 'about'
 
 interface FloatingMenuItem {
@@ -70,7 +94,7 @@ export function FloatingProjectMenu({ variant = 'project' }: FloatingProjectMenu
         aria-expanded={open}
         onClick={() => setOpen((prev) => !prev)}
       >
-        <Hicon name={open ? 'minus' : 'plus'} size={18} />
+        <FloatingMenuToggleIcon open={open} />
       </button>
     </div>
   )

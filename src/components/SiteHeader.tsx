@@ -9,13 +9,15 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ compact = false }: SiteHeaderProps) {
   return (
-    <header className="site-header">
+    <header className={`site-header${compact ? ' site-header--compact' : ''}`}>
       <Link to="/" className="site-header-logo">
         <LogoIcon />
-        <div className="logo-text">
-          <span className="logo-name">Denelsen D</span>
-          <LocalDateTime className="logo-role" />
-        </div>
+        {!compact && (
+          <div className="logo-text">
+            <span className="logo-name">Denelsen D</span>
+            <LocalDateTime className="logo-role" />
+          </div>
+        )}
       </Link>
       <nav className={`site-header-nav${compact ? ' site-header-nav--compact' : ''}`}>
         {!compact && (
