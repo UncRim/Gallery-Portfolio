@@ -563,7 +563,18 @@ const rawProjectDetails: RawProject[] = [
   },
 ]
 
-export const projectDetails: ProjectDetail[] = rawProjectDetails.map(withWebflowMedia)
+const projectOrder = [
+  'katz-master-in-ai-program-page',
+  'tshaped-redesigned',
+  'higher-ed-concept',
+  'ticketmaster-spatial-seat-selection',
+  'safescroll',
+] as const
+
+export const projectDetails: ProjectDetail[] = projectOrder
+  .map((id) => rawProjectDetails.find((project) => project.id === id))
+  .filter((project): project is RawProject => project !== undefined)
+  .map(withWebflowMedia)
 
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
   return projectDetails.find((p) => p.slug === slug)
