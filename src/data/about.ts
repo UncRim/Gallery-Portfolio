@@ -13,6 +13,40 @@ export const aboutIntro = [
   'When I’m not designing, I’m usually behind a camera (street and event photography), serving in the lighting team at Hillsong, or collecting ideas from the city, always learning, always building, and always chasing clearer experiences.',
 ] as const
 
+export interface WorkedWithLogo {
+  id: string
+  name: string
+  logo: string
+  variant?: 'icon' | 'wordmark'
+}
+
+export const workedWithLogos: WorkedWithLogo[] = [
+  { id: 'ibm', name: 'IBM', logo: '/logos/companies/ibm.png' },
+  {
+    id: 'katz',
+    name: 'Katz School of Science and Health',
+    logo: '/logos/companies/katz.png',
+  },
+  { id: 't-shaped', name: 'T Shaped', logo: '/logos/companies/t-shaped.png' },
+  {
+    id: 'cyber-alliance',
+    name: 'Cyber Alliance',
+    logo: '/logos/companies/cyber-alliance.png',
+  },
+  { id: 'better-you', name: 'Better You', logo: '/logos/companies/better-you.png' },
+  {
+    id: 'zimworx',
+    name: 'ZimworX',
+    logo: '/logos/companies/zimworx.png',
+  },
+  {
+    id: 'brand-guy',
+    name: 'The Brand Guy and Associates',
+    logo: '/logos/companies/brand-guy.png',
+  },
+  { id: 'adfarm', name: 'AdFarm', logo: '/logos/companies/adfarm.png' },
+]
+
 export interface ExperienceEntry {
   id: string
   role: string
@@ -20,6 +54,8 @@ export interface ExperienceEntry {
   description: string
   company: string
   location: string
+  logo?: string
+  logoVariant?: 'icon' | 'wordmark'
   isCurrent?: boolean
 }
 
@@ -32,6 +68,7 @@ export const experience: ExperienceEntry[] = [
       'Design and develop content-led digital experiences for IBM—translating complex product narratives into clear, structured content across web and enterprise touchpoints, and collaborating with cross-functional teams on UX writing, layout, and design system–aligned delivery.',
     company: 'IBM',
     location: 'Austin, TX',
+    logo: '/logos/companies/ibm.png',
     isCurrent: true,
   },
   {
@@ -42,6 +79,7 @@ export const experience: ExperienceEntry[] = [
       'Owned Drupal content ops and QA for Katz School’s web ecosystem, and led a UX/content modernization of faculty and STEM program pages—restructuring IA and sharpening messaging to align institutional goals with prospective student needs.',
     company: 'Yeshiva University — KATZ School of Science and Health',
     location: 'Manhattan, NYC',
+    logo: '/logos/companies/katz.png',
   },
   {
     id: 't-shaped',
@@ -51,6 +89,7 @@ export const experience: ExperienceEntry[] = [
       'Led a data-driven website and newsletter rebuild on HubSpot CMS—boosting content comprehension 40% → 90% and re-engaging 390 dormant leads via targeted workflows (47% OR)—and rebuilt LinkedIn traction with a two-post weekly carousel strategy, growing followers +15% and sustaining 25%+ CTR.',
     company: 'T Shaped',
     location: 'Manhattan, NYC',
+    logo: '/logos/companies/t-shaped.png',
   },
   {
     id: 'zimworx',
@@ -60,6 +99,7 @@ export const experience: ExperienceEntry[] = [
       'Led the end-to-end redesign of two flagship sites—driven by stakeholder interviews, client feedback, and competitive research—to establish a unified, marketing-aligned UX; built and tested responsive WordPress/Elementor builds that improved usability and brand consistency and lifted awareness and engagement.',
     company: 'ZimworX',
     location: 'Remote, TX',
+    logo: '/logos/companies/zimworx.png',
   },
   {
     id: 'velocity',
@@ -78,5 +118,6 @@ export const experience: ExperienceEntry[] = [
       'Analyzed user behavior to rework layouts and flows (+25% retention, +15% engagement), built brand guidelines and original graphics aligned to campaigns (+15% sales), and iterated key touchpoints to lift traffic +10% and generate 3× more leads.',
     company: 'The Brand Guy and Associates',
     location: 'Harare, ZW',
+    logo: '/logos/companies/brand-guy.png',
   },
 ]

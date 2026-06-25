@@ -1236,6 +1236,10 @@ body {
     animation: none;
   }
 
+  .about-worked-with-track {
+    animation: none;
+  }
+
   [data-theme='dark'] .post-fact-card::before,
   [data-theme='dark'] .post-iteration-card::before,
   [data-theme='dark'] .about-experience-item::before,
@@ -1373,6 +1377,98 @@ body {
   50% {
     opacity: 0;
   }
+}
+
+.about-worked-with {
+  margin-top: 56px;
+  overflow: hidden;
+}
+
+.about-worked-with h2 {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0 0 20px;
+  color: var(--text-primary);
+}
+
+.about-worked-with-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 4px 0 8px;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.about-worked-with-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: max-content;
+  animation: worked-with-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.about-worked-with-track:hover {
+  animation-play-state: paused;
+}
+
+.about-worked-with-track.is-static {
+  animation: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 24px;
+}
+
+.about-worked-with-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about-worked-with-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+@keyframes worked-with-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.about-experience-company-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.about-experience-company-logo--wordmark {
+  width: auto;
+  height: 14px;
+  max-width: 56px;
+  border-radius: 2px;
 }
 
 .about-experience {
@@ -1629,6 +1725,15 @@ body {
 
   .about-experience {
     margin-top: 40px;
+  }
+
+  .about-worked-with {
+    margin-top: 40px;
+  }
+
+  .about-worked-with-logo {
+    width: 56px;
+    height: 56px;
   }
 
   .about-experience-trigger {

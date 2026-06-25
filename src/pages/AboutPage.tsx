@@ -3,6 +3,7 @@ import { SiteHeader } from '../components/SiteHeader'
 import { FloatingProjectMenu } from '../components/FloatingProjectMenu'
 import { TestimonialsStrip } from '../components/TestimonialsStrip'
 import { ExperienceAccordion } from '../components/about/ExperienceAccordion'
+import { WorkedWithLogos } from '../components/about/WorkedWithLogos'
 import { AboutIntroTyping } from '../components/about/AboutIntroTyping'
 import { Hicon } from '../components/icons/Hicon'
 import { aboutHeadshot, commencementSpeechUrl, researchPaperUrl } from '../data/about'
@@ -55,6 +56,8 @@ export function AboutPage() {
         </section>
 
         <AboutIntroTyping />
+
+        <WorkedWithLogos />
 
         <section className="about-experience" aria-labelledby="about-experience-heading">
           <h2 id="about-experience-heading">Experience</h2>

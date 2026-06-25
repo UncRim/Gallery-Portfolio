@@ -69,12 +69,24 @@ export function ExperienceAccordion() {
             >
               <div className="about-experience-panel-inner">
                 <p className="about-experience-company">
-                  <Hicon
-                    name="building"
-                    size={12}
-                    className="about-experience-company-icon"
-                    aria-hidden
-                  />
+                  {entry.logo ? (
+                    <img
+                      src={entry.logo}
+                      alt=""
+                      className={`about-experience-company-logo${entry.logoVariant === 'wordmark' ? ' about-experience-company-logo--wordmark' : ''}`}
+                      width={entry.logoVariant === 'wordmark' ? 56 : 20}
+                      height={entry.logoVariant === 'wordmark' ? 14 : 20}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <Hicon
+                      name="building"
+                      size={12}
+                      className="about-experience-company-icon"
+                      aria-hidden
+                    />
+                  )}
                   {entry.company}
                 </p>
                 <p className="about-experience-description">{entry.description}</p>
