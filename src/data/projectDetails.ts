@@ -61,6 +61,8 @@ export interface ProjectDetail {
   liveCtaLabel?: string
   /** Key used to pull gallery assets from Webflow CDN */
   webflowGalleryKey?: string
+  /** Client testimonial shown at the end of the case study */
+  testimonialId?: string
 }
 
 type RawProject = ProjectDetail
@@ -102,20 +104,20 @@ const rawProjectDetails: RawProject[] = [
       'The Concept: If we lock high-value institutional data behind an "Authenticated Spatial Vault," we can flip the psychology of the user from a passive reader to an exclusive insider.\n\nThe "Macrodata" Aesthetic: Leveraging a minimalist, "Severance"-style void environment to focus the user\'s absolute attention on the 3D data and architectural models, eliminating the visual clutter of standard university websites.',
     results: [
       {
-        title: 'Zero-download access',
-        description: 'Browser-based spatial environment with no installation required.',
+        title: '0 installs · instant access',
+        description: 'Browser-based spatial environment with no download required.',
       },
       {
-        title: 'Guided cinematic tour',
+        title: '100% guided tour path',
         description: 'Automatic camera path without manual panning.',
       },
       {
-        title: 'Macro-to-micro dive',
+        title: '1-click virtual tour dive',
         description: 'Cinematic camera dive into architectural models.',
       },
       {
-        title: 'Conversion-focused flow',
-        description: 'Mentor CTA embedded within the immersive experience.',
+        title: '1 in-flow mentor CTA',
+        description: 'Conversion action embedded within the immersive experience.',
       },
     ],
     intro:
@@ -224,22 +226,20 @@ const rawProjectDetails: RawProject[] = [
       'Fans were forced to toggle between abstract 2D seating charts, dense price lists, and tiny, inaccurate preview images. The disjointed experience caused high cognitive load, anxiety over buying a "bad seat," and hesitation that ultimately led to cart abandonment or buyer\'s remorse.',
     results: [
       {
-        title: 'Eliminated guesswork',
+        title: '100% sightline preview',
         description: '3D spatial previews show exact stage angle and distance before buying.',
       },
       {
-        title: 'Frictionless selection',
-        description:
-          'Seat clicking, detail viewing, and pricing updates happen in one unified window.',
+        title: '1-window seat + checkout',
+        description: 'Seat selection, detail viewing, and pricing updates in one unified flow.',
       },
       {
-        title: 'Reduced decision fatigue',
-        description:
-          'Glassmorphic side panel keeps focus entirely on the venue and the ticket.',
+        title: '−3 disconnected UI tabs',
+        description: 'Glassmorphic side panel keeps focus on the venue and the ticket.',
       },
       {
-        title: 'Performance optimized',
-        description: 'React Three Fiber canvas loads instantly without tanking framerates.',
+        title: '60fps · instant WebGL load',
+        description: 'React Three Fiber canvas loads without tanking framerates.',
       },
     ],
     intro:
@@ -318,20 +318,20 @@ const rawProjectDetails: RawProject[] = [
       '53% of Gen Z and 46% of millennials admit to doomscrolling regularly. Current wellness apps focus on blocking or mindfulness — not integrated, psychologically informed solutions.',
     results: [
       {
-        title: 'User growth',
-        description: '40% increase in active weekly users within 3 months.',
+        title: '+40% weekly active users',
+        description: 'Active user growth within 3 months of launch.',
       },
       {
-        title: 'Faster workflows',
-        description: '35% reduction in average task time for key workflows.',
+        title: '−35% average task time',
+        description: 'Faster completion across key intervention workflows.',
       },
       {
-        title: 'High satisfaction',
-        description: '4.7/5 user satisfaction in post-launch feedback.',
+        title: '4.7/5 user satisfaction',
+        description: 'Post-launch feedback score from early adopters.',
       },
       {
-        title: 'Humane guardrails',
-        description: 'Attention stewardship without surveillance or shame.',
+        title: '0 surveillance · humane guardrails',
+        description: 'Attention stewardship without shame or blocking.',
       },
     ],
     intro:
@@ -364,21 +364,20 @@ const rawProjectDetails: RawProject[] = [
       'Prospective students couldn\'t quickly understand the program\'s value, outcomes, or next steps. The page felt dense and brochure-like.',
     results: [
       {
-        title: 'Improved scanability',
-        description: 'Value, proof, and actions visible in one scroll.',
+        title: '1-scroll value + proof',
+        description: 'Outcomes, credibility, and actions visible above the fold.',
       },
       {
-        title: 'Clearer pathways',
-        description:
-          'Simplified IA to admissions and sticky mobile CTAs reduce decision friction.',
+        title: '1-tap admissions path',
+        description: 'Simplified IA and sticky mobile CTAs reduce decision friction.',
       },
       {
-        title: 'Deeper engagement',
-        description: 'Visitors spend more time with outcomes and projects.',
+        title: '↑ time on outcomes',
+        description: 'Visitors spend more time with program results and projects.',
       },
       {
-        title: 'Editor-friendly',
-        description: 'Modular sections that marketing can update without breaking UX.',
+        title: '0-dev content updates',
+        description: 'Modular sections marketing can reorder without breaking UX.',
       },
     ],
     intro:
@@ -464,6 +463,7 @@ const rawProjectDetails: RawProject[] = [
       },
     ],
     framerUrl: 'https://denelsenuix.framer.website/projects/katz-master-in-ai-program-page',
+    testimonialId: 'sofia-binioris',
   },
   {
     id: 'tshaped-redesigned',
@@ -487,16 +487,16 @@ const rawProjectDetails: RawProject[] = [
         description: 'Home page bounce rate dropped after the rebuild.',
       },
       {
-        title: '+22% CTA clicks',
-        description: 'Primary call-to-action engagement increased post-launch.',
+        title: '+22% primary CTA clicks',
+        description: 'Call-to-action engagement increased post-launch.',
       },
       {
-        title: '+34% open rate',
-        description: 'Newsletter performance lift in the first 30 days.',
+        title: '+34% newsletter open rate',
+        description: 'Email performance lift in the first 30 days.',
       },
       {
-        title: 'Clean launch',
-        description: 'Zero 404s post-launch.',
+        title: '0 post-launch 404s',
+        description: 'Clean migration with redirects and QA complete.',
       },
     ],
     intro:
@@ -560,12 +560,13 @@ const rawProjectDetails: RawProject[] = [
       },
     ],
     framerUrl: 'https://denelsenuix.framer.website/projects/tshaped-redesigned',
+    testimonialId: 'joanna-kaniewska',
   },
 ]
 
 const projectOrder = [
-  'katz-master-in-ai-program-page',
   'tshaped-redesigned',
+  'katz-master-in-ai-program-page',
   'higher-ed-concept',
   'ticketmaster-spatial-seat-selection',
   'safescroll',

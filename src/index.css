@@ -2653,6 +2653,66 @@ body {
   color: var(--text-primary);
 }
 
+.post-testimonial {
+  margin: 56px 0 0;
+}
+
+.post-testimonial h2 {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0 0 20px;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.post-testimonial-card {
+  margin: 0;
+  padding: 28px 24px;
+  border: 1px solid var(--card-stroke);
+  border-radius: 16px;
+  background: var(--result-card-bg);
+  text-align: center;
+}
+
+.post-testimonial-quote {
+  font-family: var(--font-serif, var(--font-sans));
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.post-testimonial-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 20px;
+}
+
+.post-testimonial-name {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.post-testimonial-role {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-faint);
+}
+
 .post-media {
   margin: 32px 0 48px;
 }

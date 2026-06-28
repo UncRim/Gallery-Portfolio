@@ -49,3 +49,7 @@ export const testimonials: Testimonial[] = [
     role: 'Co-Founder — JRC Ranch Management & Consulting',
   },
 ]
+
+export function getTestimonialById(id: string): Testimonial | undefined {
+  return testimonials.find((item) => item.id === id)
+}

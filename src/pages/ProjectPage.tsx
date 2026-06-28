@@ -6,6 +6,7 @@ import { LivePrototypeCta } from '../components/project/LivePrototypeCta'
 import { MediaBlockView, PostCover } from '../components/project/PostMedia'
 import { MediaLightboxProvider } from '../components/project/MediaLightbox'
 import { ResultsCards } from '../components/project/ResultsCards'
+import { ProjectTestimonial } from '../components/project/ProjectTestimonial'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 import { Hicon } from '../components/icons/Hicon'
@@ -136,6 +137,10 @@ export function ProjectPage() {
               <blockquote>
                 <p>{project.insight ?? project.subtitle}</p>
               </blockquote>
+            )}
+
+            {project.testimonialId && (
+              <ProjectTestimonial testimonialId={project.testimonialId} />
             )}
           </div>
 
