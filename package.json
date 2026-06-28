@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
+    "dev": "npm run fetch:blog && vite",
+    "build": "npm run fetch:blog && node scripts/generate-sitemap.mjs && tsc -b && vite build && cp dist/index.html dist/404.html",
+    "fetch:blog": "node scripts/fetch-medium-posts.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

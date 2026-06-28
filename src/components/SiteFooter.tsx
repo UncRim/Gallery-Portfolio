@@ -44,6 +44,12 @@ export function SiteFooter({ variant = 'page' }: SiteFooterProps) {
             <span className="site-footer-sep" aria-hidden="true">
               |
             </span>
+            <Link to="/blog" className="site-footer-about">
+              Blog
+            </Link>
+            <span className="site-footer-sep" aria-hidden="true">
+              |
+            </span>
           </>
         )}
 

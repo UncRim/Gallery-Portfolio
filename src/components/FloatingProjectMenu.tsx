@@ -28,7 +28,7 @@ function FloatingMenuToggleIcon({ open }: { open: boolean }) {
   )
 }
 
-type FloatingMenuVariant = 'project' | 'about'
+type FloatingMenuVariant = 'project' | 'about' | 'blog'
 
 interface FloatingMenuItem {
   type: 'link' | 'external'
@@ -41,10 +41,17 @@ interface FloatingMenuItem {
 const MENU_ITEMS: Record<FloatingMenuVariant, FloatingMenuItem[]> = {
   project: [
     { type: 'link', to: '/about', icon: 'user', label: 'About Me' },
+    { type: 'link', to: '/blog', icon: 'application', label: 'My Process' },
     { type: 'external', href: LINKEDIN_URL, icon: 'linkedin', label: "Let's talk" },
   ],
   about: [
     { type: 'link', to: '/', icon: 'building', label: 'Projects' },
+    { type: 'link', to: '/blog', icon: 'application', label: 'My Process' },
+    { type: 'external', href: LINKEDIN_URL, icon: 'linkedin', label: "Let's talk" },
+  ],
+  blog: [
+    { type: 'link', to: '/', icon: 'building', label: 'Projects' },
+    { type: 'link', to: '/about', icon: 'user', label: 'About Me' },
     { type: 'external', href: LINKEDIN_URL, icon: 'linkedin', label: "Let's talk" },
   ],
 }
