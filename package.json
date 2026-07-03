@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run fetch:blog && vite",
-    "build": "npm run fetch:blog && node scripts/generate-sitemap.mjs && tsc -b && vite build && cp dist/index.html dist/404.html",
+    "build": "npm run fetch:blog && node scripts/generate-sitemap.mjs && tsc -b && vite build && cp dist/index.html dist/404.html && node scripts/prerender-spa-routes.mjs",
     "fetch:blog": "node scripts/fetch-medium-posts.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
