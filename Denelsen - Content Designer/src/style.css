@@ -467,7 +467,8 @@ footer .shell { display: flex; align-items: center; justify-content: space-betwe
 /* folder-style sections: each section rises from behind the lip of the one above */
 section.doc { position: relative; padding-top: 22px; padding-bottom: 80px; }
 section.doc + section.doc::before { content: ""; position: absolute; left: 0; right: 0; top: -46px; height: 46px; background: var(--bg); border-radius: 0 0 20px 20px; box-shadow: 0 1px 0 var(--line), 0 12px 16px -14px rgba(10, 24, 16, .26); z-index: 3; pointer-events: none; }
-section.doc.rv > * { transform: translateY(calc((1 - var(--r, 1)) * -40px)); opacity: clamp(0, calc(var(--r, 1) * 2.2), 1); will-change: transform, opacity; }
+/* Transform-only reveal — opacity:0 on off-screen copy fails WAVE contrast (fg alpha 00). */
+section.doc.rv > * { transform: translateY(calc((1 - var(--r, 1)) * -40px)); will-change: transform; }
 @media (max-width: 640px) { section.doc { padding-top: 16px; padding-bottom: 56px; } section.doc + section.doc::before { top: -34px; height: 34px; border-radius: 0 0 14px 14px; } section.doc.rv > * { transform: translateY(calc((1 - var(--r, 1)) * -28px)); } }
 
 .caption { align-items: center; }
