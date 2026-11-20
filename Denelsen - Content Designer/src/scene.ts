@@ -250,8 +250,8 @@ let lastP: any = palette(0.62);
 const people: any[] = [];
 function makeTag() {
   const g = el('g', { opacity: 0 }, partG), hw = 13.5, top = -19, bot = -7, r = 3.4;
-  el('path', { d: `M${-hw + r} ${top} H${hw - r} A${r} ${r} 0 0 1 ${hw} ${top + r} V${bot - r} A${r} ${r} 0 0 1 ${hw - r} ${bot} H3.8 L0 -1.2 L-3.8 ${bot} H${-hw + r} A${r} ${r} 0 0 1 ${-hw} ${bot - r} V${top + r} A${r} ${r} 0 0 1 ${-hw + r} ${top}Z`, fill: YOU_DEEP, stroke: '#fffaf2', 'stroke-width': 0.9, 'stroke-linejoin': 'round' }, g);
-  const t = el('text', { x: 0.6, y: -10.3, 'text-anchor': 'middle', 'font-size': 7.5, 'font-weight': 600, 'letter-spacing': 1.4, 'font-family': "'IBM Plex Mono', ui-monospace, monospace", fill: '#fffaf2' }, g); t.textContent = 'YOU';
+  el('path', { d: `M${-hw + r} ${top} H${hw - r} A${r} ${r} 0 0 1 ${hw} ${top + r} V${bot - r} A${r} ${r} 0 0 1 ${hw - r} ${bot} H3.8 L0 -1.2 L-3.8 ${bot} H${-hw + r} A${r} ${r} 0 0 1 ${-hw} ${bot - r} V${top + r} A${r} ${r} 0 0 1 ${-hw + r} ${top}Z`, fill: '#fffaf2', stroke: YOU_DEEP, 'stroke-width': 1.1, 'stroke-linejoin': 'round' }, g);
+  const t = el('text', { x: 0.6, y: -10.3, 'text-anchor': 'middle', 'font-size': 7.5, 'font-weight': 600, 'letter-spacing': 1.4, 'font-family': "'IBM Plex Mono', ui-monospace, monospace", fill: YOU_DEEP }, g); t.textContent = 'YOU';
   return g;
 }
 const STOPS = [
@@ -580,7 +580,8 @@ run((t, dt) => {
   {
     const cap = visitor && !visitor.dead ? visitor.caption() : '';
     if (cap) tourTxt.textContent = cap;
-    tourTxt.setAttribute('opacity', f(lerp(+tourTxt.getAttribute('opacity')!, cap ? 0.95 : 0, 1 - Math.exp(-dt * 6))));
+    // Full opacity when visible — faded coral fails AA against warm paper.
+    tourTxt.setAttribute('opacity', f(lerp(+tourTxt.getAttribute('opacity')!, cap ? 1 : 0, 1 - Math.exp(-dt * 6))));
     if (vw < W) {
       const want = visitor && !visitor.dead ? clamp(visitor.x - vw * 0.42, 0, W - vw) : (W - vw) / 2;
       camX = lerp(camX, want, 1 - Math.exp(-dt * 2.2)); applyCam();
@@ -592,5 +593,5 @@ run((t, dt) => {
   const hh = tau * 24, h = Math.floor(hh), m = Math.floor((hh - h) * 60);
   clock.textContent = `DOCS QUARTER · ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
   hint.setAttribute('opacity', f(hinted ? 0.85 : Math.max(0, +hint.getAttribute('opacity')! - dt * 0.8)));
-  tourTxt.setAttribute('fill', P.inkT ? '#ff8a65' : YOU);
+  tourTxt.setAttribute('fill', P.inkT ? '#ff8a65' : YOU_DEEP);
 }, { watch: svg });

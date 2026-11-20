@@ -76,7 +76,10 @@ if (host && label && count && bar && stageEl) {
       STOPS.forEach((s) => {
         const k = s.done < 0 ? 0 : ease(clamp((t - s.done) / 0.4, 0, 1));
         s.tick.setAttribute('stroke-dashoffset', f(s.len * (1 - k)));
-        s.board.setAttribute('fill', mixHex(PAPERC, GREEN, k)); s.t1.setAttribute('fill', mixHex(INKC, PAPERC, k)); s.t2.setAttribute('fill', mixHex(INKC, PAPERC, k));
+        // Soft green when listed so dark labels stay AA (WAVE checks text against the stage paper, not the board).
+        s.board.setAttribute('fill', mixHex(PAPERC, '#9fc4b0', k));
+        s.t1.setAttribute('fill', INKC);
+        s.t2.setAttribute('fill', '#4b5a52');
       });
     }
     function drawCourier(dt: number, go: number) {
