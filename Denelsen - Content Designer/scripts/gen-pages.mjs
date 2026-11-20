@@ -120,7 +120,7 @@ function page(c, i) {
         <div><dt>Tools</dt><dd><ul class="chips">${c.tools.map((t) => `<li class="chip">${esc(t)}</li>`).join('')}</ul></dd></div>
         <div><dt>Type</dt><dd>${esc(c.kind)} · ${esc(c.year)}</dd></div>
       </dl>
-      ${c.links ? `<p class="case-links">${c.links.map(([l, h]) => `<a class="btn primary" href="${esc(h)}" target="_blank" rel="noopener noreferrer">${esc(l)} ↗</a>`).join('')}</p>` : ''}
+      ${c.links ? `<p class="case-links">${c.links.map(([l, h]) => `<a class="btn primary" href="${esc(h)}" target="_blank" rel="noopener noreferrer"><svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 4.2H3.6v8.2h8.2V9.8"/><path d="M8.4 3.6h4v4M12.2 3.8 7.2 8.8"/></svg>${esc(l)}</a>`).join('')}</p>` : ''}
       ${hero(c)}
       ${secs.map((s) => s.html).join('\n      ')}
       <nav class="case-pager" aria-label="More case studies">

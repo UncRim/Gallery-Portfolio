@@ -30,7 +30,9 @@
   function renderLib() {
     lib.innerHTML = DOCS.filter(function (d) { return active === 'All' || d.tags.indexOf(active) > -1; }).map(function (d, i) {
       var res = d.results.map(function (r) { return '<li><b>' + r[0] + '</b><span>' + r[1] + '</span></li>'; }).join('');
-      var links = '<a class="btn" href="./projects/' + d.slug + '/">Read the full case study →</a>' + (d.live ? '<a class="btn" href="' + d.live[0] + '" rel="noopener">' + d.live[1] + ' ↗</a>' : '');
+      var book = '<svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.2 3.4c1.8-.9 3.4-.5 5.8.9 2.4-1.4 4-1.8 5.8-.9v9c-1.8-.9-3.4-.5-5.8.9-2.4-1.4-4-1.8-5.8-.9z"/><path d="M8 4.4v8.8"/></svg>';
+      var ext = '<svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 4.2H3.6v8.2h8.2V9.8"/><path d="M8.4 3.6h4v4M12.2 3.8 7.2 8.8"/></svg>';
+      var links = '<a class="btn" href="./projects/' + d.slug + '/">' + book + 'Read the full case study</a>' + (d.live ? '<a class="btn" href="' + d.live[0] + '" rel="noopener">' + ext + d.live[1] + '</a>' : '');
       return '<div class="row" data-open="false" id="' + d.id.toLowerCase() + '"><button type="button" aria-expanded="false" aria-controls="p' + i + '"><span class="id">' + d.id + '</span><span class="thumb vig" data-vig="' + d.slug + '"></span><span class="title">' + d.title + '</span><span class="ctx">' + d.ctx + '</span>' + chev + '</button>' +
         '<div class="panel" id="p' + i + '"><div><div class="facts"><div><h5>Brief</h5><p>' + d.brief + '</p><h5>Role</h5><p>' + d.role + '</p></div><div><h5>Content work</h5><ul>' + d.work.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ul></div><div><h5>Results</h5><ul class="res">' + res + '</ul></div></div><div class="links">' + links + '</div></div></div></div>';
     }).join('');
@@ -81,7 +83,14 @@
   }
   function paint() { G.els.forEach(function (el, i) { el.classList.toggle('said', i < G.pos); el.classList.toggle('now', G.state === 'run' && i === G.pos); }); }
   function stopRec() { if (G.rec) { var r = G.rec; G.rec = null; try { r.abort(); } catch (_) {} } }
-  function button(label) { mtGo.hidden = !label; if (label) mtGo.textContent = label; }
+  var mtMarks = {
+    'Start reading': '<svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.2" y="2.2" width="3.6" height="6.4" rx="1.8"/><path d="M4.2 7.4a3.8 3.8 0 0 0 7.6 0M8 11.2v2.2"/></svg>',
+    'I reached the next step': '<svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 8.4 6.4 11.6 12.8 4.4"/></svg>',
+    'Read the rewrite': '<svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.4 3.1 12.9 6.6"/><path d="M2.8 13.2 3.5 10.6 11.2 2.9a1.2 1.2 0 0 1 1.7 0l.2.2a1.2 1.2 0 0 1 0 1.7L5.4 12.5z"/></svg>',
+    'Try another message': '<svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.2 3.4c1.8-.9 3.4-.5 5.8.9 2.4-1.4 4-1.8 5.8-.9v9c-1.8-.9-3.4-.5-5.8.9-2.4-1.4-4-1.8-5.8-.9z"/><path d="M8 4.4v8.8"/></svg>',
+    'Try again': '<svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.2 8a5.2 5.2 0 1 1-1.4-3.5"/><path d="M13.4 2.8v3.2H10.2"/></svg>'
+  };
+  function button(label) { mtGo.hidden = !label; if (label) mtGo.innerHTML = (mtMarks[label] || '') + label; }
   function mtLoad(keepResult) {
     clearTimeout(G.idle); cancelAnimationFrame(G.raf); stopRec(); G.state = 'idle'; G.started = 0; G.pos = 0; G.restarts = [];
     var s = SCN[G.sc]; G.toks = mtTokens(G.ver ? s.after : s.before); G.lastKey = 0; G.toks.forEach(function (t, i) { if (t.k) G.lastKey = i; });
@@ -325,6 +334,30 @@
   function openPal() { returnFocus = document.activeElement; pal.dataset.open = 'true'; q.value = ''; sel = 0; draw(); setTimeout(function () { q.focus(); }, 0); }
   function closePal() { pal.dataset.open = 'false'; if (returnFocus && returnFocus.focus) returnFocus.focus(); }
   function run(i) { var a = items[i]; if (!a) return; closePal(); setTimeout(a.go, 30); }
+  /* ---------- commencement speech: play in a popup, stay on the page ---------- */
+  var speechBtn = $('#openSpeech'), speechDlg = $('#speechPlayer');
+  if (speechBtn && speechDlg && typeof speechDlg.showModal === 'function') {
+    var speechFrame = speechDlg.querySelector('iframe');
+    var speechSrc = 'https://www.youtube-nocookie.com/embed/jqx_WQXyJdg?start=2&autoplay=1&rel=0';
+    speechBtn.addEventListener('click', function () { speechFrame.src = speechSrc; speechDlg.showModal(); });
+    speechDlg.addEventListener('close', function () { speechFrame.removeAttribute('src'); });
+    speechDlg.addEventListener('click', function (e) { if (e.target === speechDlg || e.target.id === 'speechClose') speechDlg.close(); });
+  }
+
+  var flowerBtns = $$('.open-flowers'), flowerDlg = $('#flowerPlayer');
+  if (flowerBtns.length && flowerDlg && typeof flowerDlg.showModal === 'function') {
+    var flowerVid = flowerDlg.querySelector('video');
+    flowerBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        flowerDlg.showModal();
+        var play = flowerVid.play();
+        if (play && play.catch) play.catch(function () {});
+      });
+    });
+    flowerDlg.addEventListener('close', function () { flowerVid.pause(); try { flowerVid.currentTime = 0; } catch (e) {} });
+    flowerDlg.addEventListener('click', function (e) { if (e.target === flowerDlg || e.target.id === 'flowerClose') flowerDlg.close(); });
+  }
+
   $('#openPal').addEventListener('click', openPal);
   pal.addEventListener('click', function (e) { if (e.target === pal) closePal(); var b = e.target.closest('[data-i]'); if (b) run(+b.dataset.i); });
   q.addEventListener('input', function () { sel = 0; draw(); });
