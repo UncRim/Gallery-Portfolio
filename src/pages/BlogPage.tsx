@@ -1,22 +1,24 @@
-import { SiteFooter } from '../components/SiteFooter'
-import { SiteHeader } from '../components/SiteHeader'
-import { FloatingProjectMenu } from '../components/FloatingProjectMenu'
+import { Link } from 'react-router-dom'
 import { BlogPostCard } from '../components/blog/BlogPostCard'
+import { ShellNav } from '../components/shell/ShellNav'
 import { Hicon } from '../components/icons/Hicon'
 import { blogPosts, MEDIUM_PROFILE_URL } from '../data/blog'
 
 export function BlogPage() {
   return (
-    <div className="blog-page project-page">
-      <SiteHeader compact />
+    <div className="page-wrap blog-page">
+      <ShellNav />
+      <main className="page-main">
+        <Link to="/" className="page-back">
+          ← Home
+        </Link>
 
-      <main className="blog-main">
         <header className="blog-header">
-          <p className="blog-eyebrow">Process breakdowns</p>
+          <p className="doc-kicker">( field notes )</p>
           <h1 className="blog-title">How the work gets built</h1>
           <p className="blog-intro">
             Deep dives on real projects — the problems I solved, the decisions I made, and the
-            outcomes behind the case studies in this portfolio.
+            outcomes behind the specimens in this portfolio.
           </p>
           <a
             href={MEDIUM_PROFILE_URL}
@@ -25,7 +27,7 @@ export function BlogPage() {
             className="blog-medium-link"
           >
             Read the full breakdowns on Medium
-            <Hicon name="external-link" size={16} aria-hidden />
+            <Hicon name="external-link" size={14} aria-hidden />
           </a>
         </header>
 
@@ -35,9 +37,10 @@ export function BlogPage() {
           ))}
         </section>
       </main>
-
-      <SiteFooter />
-      <FloatingProjectMenu variant="blog" />
+      <footer className="site-colophon">
+        <span>© {new Date().getFullYear()} Denelsen Dandi</span>
+        <span>New York</span>
+      </footer>
     </div>
   )
 }

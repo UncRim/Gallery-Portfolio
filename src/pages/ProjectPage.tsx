@@ -1,14 +1,12 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { FactsCards } from '../components/project/FactsCards'
-import { FloatingProjectMenu } from '../components/FloatingProjectMenu'
 import { IterationCards } from '../components/project/IterationCards'
 import { LivePrototypeCta } from '../components/project/LivePrototypeCta'
 import { MediaBlockView, PostCover } from '../components/project/PostMedia'
 import { MediaLightboxProvider } from '../components/project/MediaLightbox'
 import { ResultsCards } from '../components/project/ResultsCards'
 import { ProjectTestimonial } from '../components/project/ProjectTestimonial'
-import { SiteFooter } from '../components/SiteFooter'
-import { SiteHeader } from '../components/SiteHeader'
+import { ShellNav } from '../components/shell/ShellNav'
 import { Hicon } from '../components/icons/Hicon'
 import {
   getAdjacentProjects,
@@ -28,14 +26,14 @@ export function ProjectPage() {
   const category = getCategoryFromTag(project.tag)
 
   return (
-    <div className="project-page">
-      <SiteHeader compact />
+    <div className="page-wrap project-page">
+      <ShellNav />
 
       <main className="project-main">
         <article className="post">
-          <Link to="/" className="post-back">
+          <Link to="/#specimens" className="post-back">
             <Hicon name="chevron-left" size={14} aria-hidden />
-            All projects
+            All specimens
           </Link>
 
           <header className="post-header">
@@ -163,8 +161,10 @@ export function ProjectPage() {
         </article>
       </main>
 
-      <SiteFooter />
-      <FloatingProjectMenu />
+      <footer className="site-colophon">
+        <span>© {new Date().getFullYear()} Denelsen Dandi</span>
+        <span>Case study</span>
+      </footer>
     </div>
   )
 }

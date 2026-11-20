@@ -1,22 +1,26 @@
-import { SiteFooter } from '../components/SiteFooter'
-import { SiteHeader } from '../components/SiteHeader'
-import { FloatingProjectMenu } from '../components/FloatingProjectMenu'
-import { TestimonialsStrip } from '../components/TestimonialsStrip'
+import { Link } from 'react-router-dom'
 import { ExperienceAccordion } from '../components/about/ExperienceAccordion'
 import { WorkedWithLogos } from '../components/about/WorkedWithLogos'
-import { AboutIntroTyping } from '../components/about/AboutIntroTyping'
+import { ShellNav } from '../components/shell/ShellNav'
 import { Hicon } from '../components/icons/Hicon'
-import { aboutHeadshot, commencementSpeechUrl, researchPaperUrl } from '../data/about'
+import {
+  aboutHeadshot,
+  aboutIntro,
+  commencementSpeechUrl,
+  researchPaperUrl,
+} from '../data/about'
 
 export function AboutPage() {
   return (
-    <div className="about-page project-page">
-      <SiteHeader compact />
+    <div className="page-wrap about-page">
+      <ShellNav />
+      <main className="page-main">
+        <Link to="/" className="page-back">
+          ← Home
+        </Link>
 
-      <main className="about-main">
-        <header className="about-header">
-          <h1 className="about-title">About Me</h1>
-        </header>
+        <p className="doc-kicker">( biography )</p>
+        <h1 className="about-title">About Me</h1>
 
         <section className="about-hero" aria-label="Profile">
           <div className="about-hero-media">
@@ -29,7 +33,6 @@ export function AboutPage() {
               loading="eager"
             />
           </div>
-
           <div className="about-hero-copy">
             <p className="about-hero-label">Graduation · 2026</p>
             <div className="about-hero-links">
@@ -40,7 +43,7 @@ export function AboutPage() {
                 className="about-hero-link"
               >
                 Watch my commencement speech
-                <Hicon name="external-link" size={16} aria-hidden />
+                <Hicon name="external-link" size={14} aria-hidden />
               </a>
               <a
                 href={researchPaperUrl}
@@ -49,25 +52,32 @@ export function AboutPage() {
                 className="about-hero-link"
               >
                 Read my research paper
-                <Hicon name="external-link" size={16} aria-hidden />
+                <Hicon name="external-link" size={14} aria-hidden />
               </a>
             </div>
           </div>
         </section>
 
-        <AboutIntroTyping />
+        <div className="about-intro-block">
+          {aboutIntro.map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          ))}
+        </div>
 
         <WorkedWithLogos />
 
-        <section className="about-experience" aria-labelledby="about-experience-heading">
-          <h2 id="about-experience-heading">Experience</h2>
+        <section className="doc-section" aria-labelledby="experience-heading">
+          <p className="doc-kicker">( experience )</p>
+          <h2 id="experience-heading" className="doc-title">
+            Roles
+          </h2>
           <ExperienceAccordion />
         </section>
       </main>
-
-      <TestimonialsStrip visibility="desktop" variant="marquee" />
-      <SiteFooter />
-      <FloatingProjectMenu variant="about" />
+      <footer className="site-colophon">
+        <span>© {new Date().getFullYear()} Denelsen Dandi</span>
+        <span>New York</span>
+      </footer>
     </div>
   )
 }

@@ -9,7 +9,10 @@ export function WorkedWithLogos() {
 
   return (
     <section className="about-worked-with" aria-labelledby="about-worked-with-heading">
-      <h2 id="about-worked-with-heading">Companies I&apos;ve worked with</h2>
+      <p className="doc-kicker">( collaborators )</p>
+      <h2 id="about-worked-with-heading" className="doc-title">
+        Teams I&apos;ve written with
+      </h2>
       <div className="about-worked-with-marquee" aria-label="Companies marquee">
         <ul
           className={`about-worked-with-track${prefersReducedMotion ? ' is-static' : ''}`}

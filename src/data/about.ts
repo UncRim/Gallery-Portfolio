@@ -7,10 +7,10 @@ export const researchPaperUrl =
   'https://www.researchgate.net/publication/399256742_Comparative_Study_of_Cattle_Producer_Challenges_in_the_US_and_Zimbabwe_Identifying_Opportunities_for_AI-Enabled_Extension_and_Digital_Decision_Support?channel=doi&linkId=695568c67e61d05b5314facf&showFulltext=true'
 
 export const aboutIntro = [
-  'I’m Denelsen, a product designer with a foundation in IT and a focus on turning complex systems into clear, human-centered experiences. I started my career troubleshooting platforms and workflows, which taught me something I still design around today: most “technical” problems are really clarity problems. Now I build interfaces that make the next step obvious, whether the user is a student, a customer, or a team inside a fast-moving organization.',
-  'My approach blends empathy with structure. I work closely with cross-functional teams to uncover what’s actually broken, map the user journey, and move from research to wireframes to high-fidelity prototypes in Figma. I care about design systems, accessibility, and the details that make products feel reliable: thoughtful hierarchy, consistent components, and states that handle real-world edge cases.',
-  'I have designed across web, mobile, and content-heavy enterprise environments, shipping everything from Drupal-based ecosystems to HubSpot/WordPress builds and conversion-focused flows. I’m comfortable using data to guide iteration, but I’m equally serious about craft: typography, layout, and simplicity that holds up at scale.',
-  'When I’m not designing, I’m usually behind a camera (street and event photography), serving in the lighting team at Hillsong, or collecting ideas from the city, always learning, always building, and always chasing clearer experiences.',
+  'I’m Denelsen, a content designer with a foundation in IT. I started troubleshooting platforms and workflows — which taught me something I still design around: most “technical” problems are really clarity problems. Now I shape the language, structure, and information architecture that help people decide with confidence.',
+  'My work sits between research, UX writing, and systems. I partner with product and marketing teams to uncover what’s actually broken, rewrite the journey in plain language, and ship modular content that holds up in Drupal, HubSpot, and design-system environments.',
+  'I’ve designed across Higher Ed, startups, and NGOs — program pages, conversion systems, and enterprise narratives — always measuring whether the next step feels obvious.',
+  'When I’m not writing, I’m usually behind a camera, serving on the lighting team at Hillsong, or collecting ideas from New York — always chasing clearer experiences.',
 ] as const
 
 export interface WorkedWithLogo {
