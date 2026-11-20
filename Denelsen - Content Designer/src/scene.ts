@@ -19,7 +19,8 @@ const { defs, filter } = inkDefs(svg, 'dq');
 mount.appendChild(svg);
 // Camera: on desktop the whole 960-wide street fits. On narrow screens the viewBox is
 // narrower than the street and pans to follow the visitor, so all four buildings get visited.
-const YOU = '#e2552d';
+const YOU = '#c44528'; // coral that stays AA on warm day paper
+const YOU_DEEP = '#a33820'; // bubble fill — cream label stays AA on top
 let camX = 0, vw = W, tagK = 1, fitted = false;
 function fit() {
   const r = svg.getBoundingClientRect(); if (!r.width || !r.height) return;
@@ -249,7 +250,7 @@ let lastP: any = palette(0.62);
 const people: any[] = [];
 function makeTag() {
   const g = el('g', { opacity: 0 }, partG), hw = 13.5, top = -19, bot = -7, r = 3.4;
-  el('path', { d: `M${-hw + r} ${top} H${hw - r} A${r} ${r} 0 0 1 ${hw} ${top + r} V${bot - r} A${r} ${r} 0 0 1 ${hw - r} ${bot} H3.8 L0 -1.2 L-3.8 ${bot} H${-hw + r} A${r} ${r} 0 0 1 ${-hw} ${bot - r} V${top + r} A${r} ${r} 0 0 1 ${-hw + r} ${top}Z`, fill: YOU, stroke: '#fffaf2', 'stroke-width': 0.9, 'stroke-linejoin': 'round' }, g);
+  el('path', { d: `M${-hw + r} ${top} H${hw - r} A${r} ${r} 0 0 1 ${hw} ${top + r} V${bot - r} A${r} ${r} 0 0 1 ${hw - r} ${bot} H3.8 L0 -1.2 L-3.8 ${bot} H${-hw + r} A${r} ${r} 0 0 1 ${-hw} ${bot - r} V${top + r} A${r} ${r} 0 0 1 ${-hw + r} ${top}Z`, fill: YOU_DEEP, stroke: '#fffaf2', 'stroke-width': 0.9, 'stroke-linejoin': 'round' }, g);
   const t = el('text', { x: 0.6, y: -10.3, 'text-anchor': 'middle', 'font-size': 7.5, 'font-weight': 600, 'letter-spacing': 1.4, 'font-family': "'IBM Plex Mono', ui-monospace, monospace", fill: '#fffaf2' }, g); t.textContent = 'YOU';
   return g;
 }
@@ -388,8 +389,8 @@ let spawnT = rnd(6, 10);
 // ---------------------------------------------------------------- smoke, fireflies, ui
 const smoke = Array.from({ length: 6 }, (_, i) => ({ n: pen(partG, SP * 0.6), life: i / 6 }));
 const flies = Array.from({ length: 10 }, (_, i) => ({ c: el('circle', { r: 5, fill: 'url(#dq-glow)', opacity: 0 }, glowG), x: sr(640, 940), y: sr(290, 380), k: sr(0.4, 1), ph: sr(0, 6) + i }));
-const clock = el('text', { x: 20, y: 30, 'font-size': 10, 'letter-spacing': 1.3, 'font-family': "'IBM Plex Mono', ui-monospace, monospace", fill: 'currentColor', opacity: 0.75 }, uiG);
-const hint = el('text', { x: W / 2, y: 403, 'text-anchor': 'middle', 'font-size': 8.5, 'letter-spacing': 1.1, 'font-family': "'IBM Plex Mono', ui-monospace, monospace", fill: 'currentColor', opacity: 0.6 }, uiG);
+const clock = el('text', { x: 20, y: 30, 'font-size': 10, 'letter-spacing': 1.3, 'font-family': "'IBM Plex Mono', ui-monospace, monospace", fill: 'currentColor', opacity: 0.85 }, uiG);
+const hint = el('text', { x: W / 2, y: 403, 'text-anchor': 'middle', 'font-size': 8.5, 'letter-spacing': 1.1, 'font-family': "'IBM Plex Mono', ui-monospace, monospace", fill: 'currentColor', opacity: 0.85 }, uiG);
 hint.textContent = 'DRAG TO CHANGE THE HOUR · CLICK A BUILDING, A WALKER, THE CAT, THE BIRDS OR A CLOUD';
 const tourTxt = el('text', { x: W - 18, y: 30, 'text-anchor': 'end', 'font-size': 10, 'letter-spacing': 1.3, 'font-weight': 500, 'font-family': "'IBM Plex Mono', ui-monospace, monospace", fill: YOU, opacity: 0 }, uiG);
 let hinted = true; function hintGone() { hinted = false; }
@@ -520,7 +521,11 @@ run((t, dt) => {
   winInk.forEach((n) => n.setAttribute('stroke', inkNow)); writerUpdate(t, litAvg);
   Object.values(blds).forEach((b) => {
     b.flash = Math.max(0, b.flash - dt * 0.9); const target = clamp(b.flash + (b.hover ? 0.7 : 0), 0, 1); b.amt = lerp(b.amt, target, 0.18);
-    b.sign.setAttribute('fill', rgb(mix(P.paper, ACC, b.amt * 0.95))); b.signTxt.setAttribute('fill', rgb(mix(P.ink, P.paper, b.amt)));
+    // Keep label ink solid (WAVE checks text against the scene paper, not the band).
+    // Day highlight stays a soft green so dark ink remains AA; night uses the accent on dark paper.
+    const band = P.inkT ? ACC : toRGB('#9fc4b0');
+    b.sign.setAttribute('fill', rgb(mix(P.paper, band, b.amt * 0.95)));
+    b.signTxt.setAttribute('fill', rgb(P.ink));
   });
   // lamp
   const lampLit = smooth(0.34, 0.5, P.lamp + wet * 0.22);
@@ -586,5 +591,6 @@ run((t, dt) => {
   // clock
   const hh = tau * 24, h = Math.floor(hh), m = Math.floor((hh - h) * 60);
   clock.textContent = `DOCS QUARTER · ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
-  hint.setAttribute('opacity', f(hinted ? 0.6 : Math.max(0, +hint.getAttribute('opacity')! - dt * 0.8)));
+  hint.setAttribute('opacity', f(hinted ? 0.85 : Math.max(0, +hint.getAttribute('opacity')! - dt * 0.8)));
+  tourTxt.setAttribute('fill', P.inkT ? '#ff8a65' : YOU);
 }, { watch: svg });
