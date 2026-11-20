@@ -100,3 +100,10 @@ Click any cloud in the Docs Quarter (or use Clear / Rain / Snow under the scene)
 The two games share one tab row (`.lab-tabs`), so only one shows at a time; leaving "Out loud" mid-round resets it.
 - **Out loud** (`#midtask`): read a message aloud (Web Speech API) before the reader's patience runs out, first the original, then the rewrite. Edit the four messages in `SCN` in `src/page.js`: `before` and `after`, with `[[the next step]]` marked. Without speech recognition (or if the mic is blocked) it falls back to tapping when you reach the next step.
 - **Style linter** (`#linter`): checks pasted copy live against the voice you pick and shows each flag in a tooltip on hover or tap. Edit the word lists in `DICT` and the per-voice rules in `VOICE_RULES`.
+
+## Results animations (case study pages)
+
+The Results cards on the Katz School and T-Shaped case studies carry looping line-art SVGs.
+They live in `src/anim/<katz|tshaped>/` (themed, so they follow light/dark through CSS variables) and are inlined by `scripts/gen-pages.mjs`
+(see the `ANIM` map at the top). To add them to another case, drop four SVGs in `src/anim/<group>/` and add the slug to `ANIM`.
+They pause when off-screen (`src/case.ts`) and show a still, finished frame under `prefers-reduced-motion`.

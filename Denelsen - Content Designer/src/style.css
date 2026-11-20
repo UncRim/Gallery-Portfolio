@@ -599,3 +599,7 @@ footer { padding: var(--space-7) 0 var(--space-10); }
 @media (max-width: 560px) { .lab-tabs button { flex: 1 1 0; padding: var(--space-3) var(--space-2); } }
 
 #linter .lint-status { margin-top: var(--space-4); }
+/* results animations (case study pages only) */
+.case-results .res-art { margin: calc(var(--space-1) * -1) 0 var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px dashed var(--line); }
+.case-results .res-art svg { display: block; width: 100%; height: auto; }
+.res-art[data-off] * { animation-play-state: paused !important; }

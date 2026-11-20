@@ -42,6 +42,13 @@ function onScroll() {
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
 
+// Results animations: pause the loops while they are off screen
+const arts = $$('.res-art');
+if (arts.length && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver((es) => es.forEach((e) => (e.target as HTMLElement).toggleAttribute('data-off', !e.isIntersecting)), { rootMargin: '80px' });
+  arts.forEach((a) => io.observe(a));
+}
+
 // image viewer
 const lb = $<HTMLDialogElement>('#lightbox');
 if (lb && typeof lb.showModal === 'function') {

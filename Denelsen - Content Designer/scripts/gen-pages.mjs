@@ -1,6 +1,6 @@
 // Writes projects/<slug>/index.html for every case study in src/data/cases.js.
 // Runs automatically before `dev` and `build`. Edit the content in src/data/cases.js, not the generated files.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readdirSync, readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CASES } from '../src/data/cases.js';
@@ -8,6 +8,13 @@ import { CASES } from '../src/data/cases.js';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// Looping line-art animations for the Results cards: src/anim/<group>/<group>-result-<n>-*.svg, inlined so they follow the light/dark theme.
+const ANIM = { 'katz-master-in-ai-program-page': 'katz', 'tshaped-redesigned': 'tshaped' };
+const resultArt = (slug) => {
+  const group = ANIM[slug], dir = join(root, 'src/anim', group || '');
+  if (!group || !existsSync(dir)) return [];
+  return readdirSync(dir).filter((f) => f.endsWith('.svg')).sort().map((f) => readFileSync(join(dir, f), 'utf8').trim());
+};
 const words = (c) => [c.problem.join(' '), c.results.flat().join(' '), JSON.stringify(c.sections), c.closing?.p ?? '', c.tagline ?? ''].join(' ').split(/\s+/).length;
 
 const img = (a, extra = '') => `<img src="../../${esc(a.local)}" data-remote="${esc(a.remote)}" alt="${esc(a.alt)}" loading="lazy" decoding="async" onerror="if(this.dataset.remote&&this.src.indexOf(this.dataset.remote)<0)this.src=this.dataset.remote"${extra}>`;
@@ -37,7 +44,7 @@ function page(c, i) {
   const prev = CASES[(i + CASES.length - 1) % CASES.length], next = CASES[(i + 1) % CASES.length];
   const secs = [
     { id: 'problem', h: 'Problem', html: `<section class="case-sec" id="problem"><h2>Problem</h2>${c.problem.map((t, k) => `<p${k === 0 ? ' class="lede"' : ''}>${esc(t)}</p>`).join('')}</section>` },
-    { id: 'results', h: 'Results', html: `<section class="case-sec" id="results"><h2>Results</h2><ul class="case-results">${c.results.map(([a, b]) => `<li class="card"><h3>${esc(a)}</h3><p>${esc(b)}</p></li>`).join('')}</ul></section>` },
+    { id: 'results', h: 'Results', html: `<section class="case-sec" id="results"><h2>Results</h2><ul class="case-results">${c.results.map(([a, b], k) => { const art = resultArt(c.slug)[k]; return `<li class="card">${art ? `<div class="res-art">${art}</div>` : ''}<h3>${esc(a)}</h3><p>${esc(b)}</p></li>`; }).join('')}</ul></section>` },
     ...c.sections.map(section),
   ];
   if (c.closing) secs.push({ id: slugify(c.closing.h), h: c.closing.h, html: `<section class="case-sec" id="${slugify(c.closing.h)}"><h2>${esc(c.closing.h)}</h2><p>${esc(c.closing.p)}</p></section>` });
