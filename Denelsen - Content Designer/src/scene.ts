@@ -14,7 +14,7 @@ const WARM = toRGB('#ffd08a'), DARKWARM = toRGB('#3a2a1a'), ACC = toRGB('#1a6b4a
 const oval = (cx: number, cy: number, rx: number, ry: number) => `M${f(cx - rx)} ${f(cy)} a${rx} ${ry} 0 1 0 ${2 * rx} 0 a${rx} ${ry} 0 1 0 ${-2 * rx} 0Z`;
 
 const mount = document.getElementById('quarter')!;
-const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid slice', role: 'img', 'aria-label': 'Ink drawing of a quiet street with four buildings: API Reference, Style Guide, Release Notes and Microcopy. People walk past and the light follows the time of day. A visitor in a coral coat, marked YOU, stops at each building in turn.' }) as SVGSVGElement;
+const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid slice', role: 'img', 'aria-label': 'Line-art Docs Quarter: API Reference, Style Guide, Release Notes, and Microcopy.' }) as SVGSVGElement;
 const { defs, filter } = inkDefs(svg, 'dq');
 mount.appendChild(svg);
 // Camera: on desktop the whole 960-wide street fits. On narrow screens the viewBox is
@@ -495,7 +495,7 @@ const DAY = 300;
 new ResizeObserver(fit).observe(svg); fit();
 run((t, dt) => {
   const tau = (((tau0 + t / DAY + tauOff) % 1) + 1) % 1;
-  const P = palette(tau); lastP = P; applyPalette(svg, P);
+  const P = palette(tau); lastP = P; applyPalette(svg, P, mount);
   sTop.setAttribute('stop-color', rgb(P.top)); sBot.setAttribute('stop-color', rgb(P.bottom));
   wind.step(t); const wv = wind.value;
   const wet = weatherTick(t, dt, P, wv);

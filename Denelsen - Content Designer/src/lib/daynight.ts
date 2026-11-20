@@ -2,8 +2,8 @@
 // τ ∈ [0,1): 0 midnight · 0.25 dawn · 0.5 noon · 0.75 dusk.
 //
 // Day is dark ink on warm paper. Night inverts it: pale ink on indigo paper, with
-// warm light from windows and lanterns. The ink flips while the paper is mid-dark,
-// so the low-contrast moment lasts about a second of a three-minute day.
+// warm light from windows and lanterns. Ink flips in one step once paper is dark
+// enough, so labels stay AA during twilight.
 
 export type RGB = [number, number, number];
 type Ramp = Array<[pos: number, hex: string]>;
@@ -46,10 +46,11 @@ export interface Palette {
 export function palette(tau: number): Palette {
   const top = ramp(SKY_TOP, tau), bottom = ramp(SKY_BOTTOM, tau), paper = ramp(PAPERS, tau);
   const L = lum(paper);
-  const inkT = smooth(0.56, 0.36, L);
+  // Hard flip ink (no mid-blend) so SVG labels stay AA against paper during twilight.
+  const inkT = L < 0.18 ? 1 : 0;
   return {
     top, bottom, paper, inkT,
-    ink: mix(INK_DARK, INK_LIGHT, inkT),
+    ink: inkT ? INK_LIGHT : INK_DARK,
     lamp: smooth(0.78, 0.4, L),
     night: smooth(0.42, 0.1, lum(top)),
     sunset: Math.max(smooth(0.67, 0.735, tau) * smooth(0.79, 0.745, tau), smooth(0.215, 0.245, tau) * smooth(0.3, 0.26, tau)),
@@ -57,9 +58,12 @@ export function palette(tau: number): Palette {
 }
 
 /** Apply a palette to an <svg> drawn with ink.ts (needs `.pp { fill: var(--paper) }` in CSS). */
-export function applyPalette(svg: SVGSVGElement, P: Palette): void {
+export function applyPalette(svg: SVGSVGElement, P: Palette, host?: HTMLElement | null): void {
+  const paper = rgb(P.paper);
   svg.style.color = rgb(P.ink);
-  svg.style.setProperty('--paper', rgb(P.paper));
+  svg.style.setProperty('--paper', paper);
+  const box = host || (svg.parentElement as HTMLElement | null);
+  if (box) box.style.setProperty('--paper', paper);
 }
 
 /** Darken a flat colour (clothes, props) toward night so it sits in the inverted palette. */

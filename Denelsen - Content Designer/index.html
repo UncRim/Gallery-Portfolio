@@ -260,7 +260,8 @@
           <label class="f" for="msg">What are you working on?
             <textarea id="msg" name="message" maxlength="4000" required placeholder="A few lines about the product, the audience and the deadline."></textarea>
           </label>
-          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="sr" for="honey">Leave this field blank</label>
+          <input class="hp" id="honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
           <div class="send-row"><button class="btn primary" id="send" type="submit"><svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 8.2 13.4 2.8 8.8 13.2 7.6 8.8z"/></svg>Send message</button><span class="form-note" id="formNote" role="status" aria-live="polite"></span></div>
         </form>
         <div class="card">
@@ -289,17 +290,23 @@
   <span class="f-copy">© 2026 Denelsen Dandi · Austin, TX</span>
 </div></footer>
 
-<div class="pal" id="pal" data-open="false" role="dialog" aria-modal="true" aria-label="Search the docs">
-  <div><input id="palq" type="text" placeholder="Search sections, case studies, actions…" autocomplete="off" aria-label="Search the docs"><ul id="pall"></ul></div>
+<div class="pal" id="pal" data-open="false" role="dialog" aria-modal="true" aria-labelledby="palTitle">
+  <div>
+    <h2 class="sr" id="palTitle">Search the docs</h2>
+    <label class="sr" for="palq">Search sections, case studies, and actions</label>
+    <input id="palq" type="search" placeholder="Search sections, case studies, actions…" autocomplete="off">
+    <ul id="pall" role="listbox" aria-label="Search results"></ul>
+  </div>
 </div>
 <div class="toast" id="toast" role="status"></div>
 
 <dialog class="player player-clip" id="flowerPlayer" aria-label="Goodbye flowers">
   <button type="button" class="btn" id="flowerClose">Close</button>
   <div class="player-frame player-frame-clip">
-    <video playsinline controls preload="metadata" src="/photos/goodbye-flowers.mp4" aria-label="Goodbye flowers">
+    <video playsinline controls preload="metadata" src="/photos/goodbye-flowers.mp4" aria-describedby="flowerDesc">
       <track kind="captions" src="/photos/goodbye-flowers.vtt" srclang="en" label="English" default>
     </video>
+    <p class="sr" id="flowerDesc">Short farewell clip with captions. Two people hug in an office, then the camera turns away.</p>
   </div>
 </dialog>
 

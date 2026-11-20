@@ -11,7 +11,7 @@ if (boot && host) {
   const GREEN = '#1a6b4a', PAPERC = '#fdfcf8', INKC = '#1c1c1c', MONO = "'IBM Plex Mono', ui-monospace, monospace";
   const MSG = ['Infrastructure, decoded.', 'Plain-language steps.', 'Laid out for the people using it.', 'Connected. Opening the docs.'];
   const mixHex = (a: string, b: string, t: number) => { const h = (s: string, i: number) => parseInt(s.slice(i, i + 2), 16); return `rgb(${[1, 3, 5].map((i) => Math.round(h(a, i) + (h(b, i) - h(a, i)) * t)).join(',')})`; };
-  const svg = el('svg', { viewBox: `0 0 ${VW} ${VH}`, role: 'img', 'aria-label': 'A designer holds up a plank bridging two blocks, IT infrastructure and design. Packets from the infrastructure side cross his hands, turn into documents and land as finished sections of a layout.' }) as SVGSVGElement;
+  const svg = el('svg', { viewBox: `0 0 ${VW} ${VH}`, role: 'img', 'aria-label': 'A designer bridging IT infrastructure and design.' }) as SVGSVGElement;
   const { filter } = inkDefs(svg, 'bt'); host.appendChild(svg);
   const scene = el('g', { filter }, svg), back = el('g', {}, scene), figG = el('g', {}, scene), plankG = el('g', {}, scene), pktG = el('g', {}, scene), fx = el('g', {}, scene);
   const sr = seeded(7);

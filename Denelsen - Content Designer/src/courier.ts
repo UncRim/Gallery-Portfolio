@@ -22,7 +22,7 @@ if (host && label && count && bar && stageEl) {
   function build(wide: boolean) {
     host!.innerHTML = '';
     const VW = wide ? 640 : 400, VH = 210, GROUND = 170, SC = 1.6, SP = 0.9, START = 46;
-    const svg = el('svg', { viewBox: `0 0 ${VW} ${VH}`, role: 'img', 'aria-label': 'A small courier running a parcel of documents past three signposts, IBM.com, AWS and Azure marketplaces. Each turns green, then a LISTED stamp lands.' }) as SVGSVGElement;
+    const svg = el('svg', { viewBox: `0 0 ${VW} ${VH}`, role: 'img', 'aria-label': 'Courier delivering docs to IBM.com, AWS, and Azure marketplaces.' }) as SVGSVGElement;
     const { filter } = inkDefs(svg, 'cr'); host!.appendChild(svg);
     const scene = el('g', { filter }, svg), backG = el('g', {}, scene), figG = el('g', {}, scene), stampG = el('g', { opacity: 0 }, scene);
     const sr = seeded(5);
@@ -42,7 +42,7 @@ if (host && label && count && bar && stageEl) {
       const board = shape(backG, SP); board.classList.remove('pp'); board.setAttribute('fill', PAPERC);
       board.setAttribute('d', `M${f(s.x - 33)} 38 L${f(s.x + 33)} 38 L${f(s.x + 33)} 62 L${f(s.x - 33)} 62Z`);
       const t1 = el('text', { x: f(s.x), y: 51, 'text-anchor': 'middle', 'font-size': 10, 'letter-spacing': 1.2, 'font-weight': 500, 'font-family': MONO, fill: INKC }, backG); t1.textContent = s.a;
-      const t2 = el('text', { x: f(s.x), y: 58.4, 'text-anchor': 'middle', 'font-size': 4.6, 'letter-spacing': 1.1, 'font-family': MONO, fill: INKC, opacity: 0.7 }, backG); t2.textContent = 'MARKETPLACE';
+      const t2 = el('text', { x: f(s.x), y: 58.4, 'text-anchor': 'middle', 'font-size': 4.6, 'letter-spacing': 1.1, 'font-family': MONO, fill: '#4b5a52' }, backG); t2.textContent = 'MARKETPLACE';
       const box = shape(backG, SP); box.setAttribute('d', `M${f(s.x - 7)} 86 L${f(s.x + 7)} 86 L${f(s.x + 7)} 100 L${f(s.x - 7)} 100Z`);
       const tick = pen(backG, SP * 1.8); tick.setAttribute('d', `M${f(s.x - 3.6)} 93.4 L${f(s.x - 0.8)} 96.8 L${f(s.x + 4.2)} 89.6`); tick.setAttribute('stroke', GREEN);
       const len = 14; tick.setAttribute('stroke-dasharray', String(len)); tick.setAttribute('stroke-dashoffset', String(len));
