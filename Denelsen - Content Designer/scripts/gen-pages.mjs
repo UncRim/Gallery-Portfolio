@@ -140,7 +140,7 @@ function page(c, i) {
 </div>
 
 <footer><div class="shell">
-  <span class="f-note">Set in Open Sans, Fraunces and IBM Plex Mono. Drawn with one pen.</span>
+  <span class="f-note">Set in Fraunces, Open Sans and IBM Plex Mono. Drawn with one pen.</span>
   <span class="f-copy">© 2026 Denelsen Dandi · Austin, TX</span>
 </div></footer>
 

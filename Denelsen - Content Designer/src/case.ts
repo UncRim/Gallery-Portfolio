@@ -1,9 +1,7 @@
 // Behaviour shared by every case study page: fonts, theme cord, flipping logo, progress bar,
 // on-this-page highlighting, reading time and a simple image viewer.
-import '@fontsource-variable/open-sans';
-import '@fontsource-variable/open-sans/wght-italic.css';
+import '@fontsource-variable/open-sans/index.css';
 import '@fontsource-variable/fraunces/full.css';
-import '@fontsource-variable/fraunces/wght-italic.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import './rope.ts';

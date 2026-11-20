@@ -1,8 +1,6 @@
-// Entry point. Fonts are self-hosted via fontsource: Open Sans (body), Fraunces (headings), IBM Plex Mono (labels).
-import '@fontsource-variable/open-sans';
-import '@fontsource-variable/open-sans/wght-italic.css';
+// Entry point. Fonts are self-hosted via fontsource: Open Sans (body), Fraunces (headings) and IBM Plex Mono (labels and code).
+import '@fontsource-variable/open-sans/index.css';
 import '@fontsource-variable/fraunces/full.css';
-import '@fontsource-variable/fraunces/wght-italic.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 // Order matters: the loader runs first, then the scene, the card courier and the pull cord

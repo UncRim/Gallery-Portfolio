@@ -9,7 +9,7 @@ const preloadFonts = (): Plugin => ({
     order: 'post',
     handler(html, ctx) {
       if (!ctx.bundle) return html;
-      const want = [/open-sans-latin-wght-normal/, /fraunces-latin-full-normal/, /fraunces-latin-wght-italic/];
+      const want = [/open-sans-latin-standard-normal/, /fraunces-latin-full-normal/];
       const tags = Object.keys(ctx.bundle)
         .filter((f) => f.endsWith('.woff2') && want.some((r) => r.test(f)))
         .map((f) => ({ tag: 'link', attrs: { rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: '', href: './' + f }, injectTo: 'head' as const }));
