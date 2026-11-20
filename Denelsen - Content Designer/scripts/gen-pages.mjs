@@ -12,12 +12,14 @@ const words = (c) => [c.problem.join(' '), c.results.flat().join(' '), JSON.stri
 
 const img = (a, extra = '') => `<img src="../../${esc(a.local)}" data-remote="${esc(a.remote)}" alt="${esc(a.alt)}" loading="lazy" decoding="async" onerror="if(this.dataset.remote&&this.src.indexOf(this.dataset.remote)<0)this.src=this.dataset.remote"${extra}>`;
 
+const zoom = (inner, label) => `<button type="button" class="zoom">${inner}<span class="sr">Enlarge image: ${esc(label)}</span></button>`;
+
 function hero(c) {
   const h = c.hero;
   if (h.video) {
     return `<figure class="case-hero"><video controls muted playsinline preload="metadata" poster="../../${esc(h.poster.local)}"><source src="../../${esc(h.video.local)}" type="video/mp4"><source src="${esc(h.video.remote)}" type="video/mp4"></video></figure>`;
   }
-  return `<figure class="case-hero">${img(h.image, ' fetchpriority="high" loading="eager"')}</figure>`;
+  return `<figure class="case-hero">${zoom(img(h.image, ' fetchpriority="high" loading="eager"'), h.image.alt)}</figure>`;
 }
 
 function section(s) {
@@ -39,7 +41,7 @@ function page(c, i) {
     ...c.sections.map(section),
   ];
   if (c.closing) secs.push({ id: slugify(c.closing.h), h: c.closing.h, html: `<section class="case-sec" id="${slugify(c.closing.h)}"><h2>${esc(c.closing.h)}</h2><p>${esc(c.closing.p)}</p></section>` });
-  secs.push({ id: 'visuals', h: 'Visuals', html: `<section class="case-sec" id="visuals"><h2>Visuals</h2><div class="gallery">${c.gallery.map((g) => `<figure>${img(g)}</figure>`).join('')}</div>${c.tagline ? `<p class="tagline">${esc(c.tagline)}</p>` : ''}</section>` });
+  secs.push({ id: 'visuals', h: 'Visuals', html: `<section class="case-sec" id="visuals"><h2>Visuals</h2><div class="gallery">${c.gallery.map((g) => `<figure>${zoom(img(g), g.alt)}</figure>`).join('')}</div>${c.tagline ? `<p class="tagline">${esc(c.tagline)}</p>` : ''}</section>` });
   if (c.quote) secs.push({ id: 'kind-words', h: 'Kind words', html: `<section class="case-sec" id="kind-words"><h2>Kind words</h2><blockquote class="quote">${esc(c.quote)}</blockquote></section>` });
 
     return `<!DOCTYPE html>
@@ -81,6 +83,7 @@ function page(c, i) {
 ] })}</script>
 </head>
 <body id="top" data-words="${words(c)}">
+<a class="skip" href="#content">Skip to content</a>
 <div class="progress" aria-hidden="true"><i id="bar"></i></div>
 <header class="top">
   <div class="shell">
@@ -98,12 +101,12 @@ function page(c, i) {
 
 <div class="shell docs">
   <aside class="side" aria-label="Case studies">
-    <h4>Library</h4>
+    <p class="side-label">Library</p>
     <a href="../../#library">← All case studies</a>
     <div class="sub">${CASES.map((o) => `<a href="../${o.slug}/"${o.slug === c.slug ? ' aria-current="true"' : ''}><span>${o.id.slice(4)}</span>${esc(o.title)}</a>`).join('')}</div>
   </aside>
 
-  <main>
+  <main id="content">
     <article class="case">
       <a class="case-back" href="../../#library">← All case studies</a>
       <div class="crumbs">docs <span aria-hidden="true">/</span> library <span aria-hidden="true">/</span> <b>${c.id.toLowerCase()}</b></div>
@@ -120,7 +123,7 @@ function page(c, i) {
         <div><dt>Tools</dt><dd><ul class="chips">${c.tools.map((t) => `<li class="chip">${esc(t)}</li>`).join('')}</ul></dd></div>
         <div><dt>Type</dt><dd>${esc(c.kind)} · ${esc(c.year)}</dd></div>
       </dl>
-      ${c.links ? `<p class="case-links">${c.links.map(([l, h]) => `<a class="btn primary" href="${esc(h)}" target="_blank" rel="noopener noreferrer"><svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 4.2H3.6v8.2h8.2V9.8"/><path d="M8.4 3.6h4v4M12.2 3.8 7.2 8.8"/></svg>${esc(l)}</a>`).join('')}</p>` : ''}
+      ${c.links ? `<p class="case-links">${c.links.map(([l, h]) => `<a class="btn primary" href="${esc(h)}" target="_blank" rel="noopener noreferrer"><svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 4.2H3.6v8.2h8.2V9.8"/><path d="M8.4 3.6h4v4M12.2 3.8 7.2 8.8"/></svg>${esc(l)}<span class="sr"> (opens in a new tab)</span></a>`).join('')}</p>` : ''}
       ${hero(c)}
       ${secs.map((s) => s.html).join('\n      ')}
       <nav class="case-pager" aria-label="More case studies">
@@ -132,9 +135,9 @@ function page(c, i) {
   </main>
 
   <aside class="toc" aria-label="On this page">
-    <h4>On this page</h4>
+    <p class="side-label">On this page</p>
     ${secs.map((s) => `<a href="#${s.id}" data-spy="${s.id}">${esc(s.h)}</a>`).join('')}
-    <h4>Reading time</h4>
+    <p class="side-label">Reading time</p>
     <span class="mono" id="rt" style="font-size:13px;color:var(--muted)"></span>
   </aside>
 </div>

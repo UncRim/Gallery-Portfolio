@@ -163,6 +163,7 @@ if (boot && host) {
   function done() {
     if (gone) return; gone = true; cancelAnimationFrame(raf);
     boot!.classList.add('done'); document.documentElement.classList.remove('booting');
+    (window as unknown as { __bootRelease?: () => void }).__bootRelease?.();
     try { sessionStorage.setItem('dd-boot', '1'); } catch (e) {}
     setTimeout(() => boot!.remove(), 520);
   }

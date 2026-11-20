@@ -16,7 +16,10 @@ if (form) {
     note.replaceChildren(document.createTextNode(text));
     note.dataset.kind = kind;
   };
-  const flag = (el: Field, bad: boolean) => { if (bad) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); };
+  const flag = (el: Field, bad: boolean) => {
+    if (bad) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', 'formNote'); }
+    else { el.removeAttribute('aria-invalid'); if (el.getAttribute('aria-describedby') === 'formNote') el.removeAttribute('aria-describedby'); }
+  };
 
   [nameEl, emailEl, msgEl].forEach((el) => el.addEventListener('input', () => { flag(el, false); if (note.dataset.kind === 'err') say(''); }));
 

@@ -37,7 +37,7 @@ function onScroll() {
   const y = scrollY + 140;
   let cur = '';
   for (const s of secs) if (s.offsetTop <= y) cur = s.id;
-  $$('[data-spy]').forEach((a) => a.setAttribute('aria-current', String(a.dataset.spy === cur)));
+  $$('[data-spy]').forEach((a) => { if (a.dataset.spy === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
 }
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
@@ -47,7 +47,9 @@ const lb = $<HTMLDialogElement>('#lightbox');
 if (lb && typeof lb.showModal === 'function') {
   const big = lb.querySelector('img')!;
   document.addEventListener('click', (e) => {
-    const img = (e.target as Element).closest<HTMLImageElement>('.gallery img, .case-hero img');
+    const hit = (e.target as Element).closest<HTMLElement>('.zoom, .gallery img, .case-hero img');
+    if (!hit) return;
+    const img = hit instanceof HTMLImageElement ? hit : hit.querySelector('img');
     if (!img) return;
     big.src = img.currentSrc || img.src; big.alt = img.alt; lb.showModal();
   });

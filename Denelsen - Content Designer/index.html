@@ -34,6 +34,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "__SITE_URL__/#person", "name": "Denelsen Dandi", "url": "__SITE_URL__/", "image": "__SITE_URL__/og/home.png", "jobTitle": "Content Designer", "description": "Freelance content designer and UX writer in Austin, TX, writing product documentation, style guides, release notes and microcopy.", "worksFor": {"@type": "Organization", "name": "IBM"}, "address": {"@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US"}, "knowsAbout": ["Content design", "UX writing", "Technical documentation", "API documentation", "Microcopy", "Style guides", "Information architecture"], "sameAs": __SAMEAS__}, {"@type": "WebSite", "@id": "__SITE_URL__/#website", "url": "__SITE_URL__/", "name": "Denelsen Dandi", "description": "Freelance content designer and UX writer in Austin, TX. Product documentation, style guides, release notes and microcopy that get people to the next step.", "inLanguage": "en", "publisher": {"@id": "__SITE_URL__/#person"}}, {"@type": "ProfessionalService", "@id": "__SITE_URL__/#service", "name": "Denelsen Dandi, Freelance Content Design", "url": "__SITE_URL__/", "image": "__SITE_URL__/og/home.png", "description": "Freelance content designer and UX writer in Austin, TX. Product documentation, style guides, release notes and microcopy that get people to the next step.", "provider": {"@id": "__SITE_URL__/#person"}, "areaServed": "Worldwide", "address": {"@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US"}, "serviceType": ["Content design", "UX writing", "Technical documentation", "Style guides", "Release notes"]}]}</script>
 </head>
 <body id="top">
+<a class="skip" href="#content">Skip to content</a>
 <div class="boot" id="boot" role="status" aria-live="polite" aria-label="Loading the portfolio">
   <div class="boot-card">
     <div class="boot-art" id="bootSvg"></div>
@@ -42,7 +43,7 @@
   </div>
   <button type="button" class="btn boot-skip" id="bootSkip">Skip intro</button>
 </div>
-<script>(function(){var s=false;try{s=sessionStorage.getItem('dd-boot')==='1'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](noboot|debug)\b/.test(location.search))s=true;var b=document.getElementById('boot');if(s){b.parentNode.removeChild(b)}else{document.documentElement.classList.add('booting');setTimeout(function(){var x=document.getElementById('boot');document.documentElement.classList.remove('booting');if(x)x.parentNode.removeChild(x)},9000)}})();</script>
+<script>(function(){var s=false;try{s=sessionStorage.getItem('dd-boot')==='1'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](noboot|debug)\b/.test(location.search))s=true;var b=document.getElementById('boot');function release(){Array.prototype.forEach.call(document.body.children,function(el){if(el.id!=='boot')el.removeAttribute('inert')})}if(s){b.parentNode.removeChild(b)}else{document.documentElement.classList.add('booting');window.__bootRelease=release;setTimeout(function(){if(!document.getElementById('boot'))return;Array.prototype.forEach.call(document.body.children,function(el){if(el.id!=='boot')el.setAttribute('inert','')})},0);setTimeout(function(){var x=document.getElementById('boot');document.documentElement.classList.remove('booting');release();if(x)x.parentNode.removeChild(x)},9000)}})();</script>
 <div class="progress" aria-hidden="true"><i id="bar"></i></div>
 
 <header class="top">
@@ -61,9 +62,9 @@
   </div>
 </header>
 
-<div class="shell hero">
+<section class="shell hero" id="content" aria-labelledby="intro-heading">
   <div class="crumbs">docs <span aria-hidden="true">/</span> <b>introduction</b></div>
-  <h1>Content that gets people to <em>the next step.</em></h1>
+  <h1 id="intro-heading">Content that gets people to <em>the next step.</em></h1>
   <p class="lede">I'm <strong>Denelsen</strong> and started in IT infrastructure, where a vague instruction cost real time. Now I'm a content designer, shaping what products look like and what they say, so users get to the next step clearly!</p>
   <div class="actions">
     <a class="btn primary" href="#library"><svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.2 3.4c1.8-.9 3.4-.5 5.8.9 2.4-1.4 4-1.8 5.8-.9v9c-1.8-.9-3.4-.5-5.8.9-2.4-1.4-4-1.8-5.8-.9z"/><path d="M8 4.4v8.8"/></svg>Read the case studies</a>
@@ -89,13 +90,13 @@
       <div class="stat"><b>+30%</b><span>sales from brand guidelines and graphics built with the marketing team</span><small>TBGA Consulting · 2022</small></div>
     </div>
   </div>
-</div>
+</section>
 
 <div class="shell docs">
   <aside class="side" aria-label="Documentation navigation">
-    <h4>Start</h4>
+    <p class="side-label">Start</p>
     <a href="#top">Introduction</a>
-    <h4>Docs</h4>
+    <p class="side-label">Docs</p>
     <a href="#practice" data-spy="practice">Practice</a>
     <a href="#library" data-spy="library">Library</a>
     <div class="sub" id="sideLib"></div>
@@ -118,7 +119,7 @@
           <button type="button" role="tab" id="t-micro" class="ftab" data-bld="micro" aria-controls="p-micro" aria-selected="false" tabindex="-1"><i>04</i><span class="full">Microcopy</span><span class="short">Micro</span></button>
         </div>
         <div class="sheets">
-          <article class="sheet on" id="p-api" role="tabpanel" aria-labelledby="t-api" data-bld="api">
+          <div class="sheet on" id="p-api" role="tabpanel" aria-labelledby="t-api" data-bld="api">
             <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8c-3 0-4 1.4-4 4v3c0 2-1.6 3-3.5 5 1.9 2 3.5 3 3.5 5v3c0 2.6 1 4 4 4M26 8c3 0 4 1.4 4 4v3c0 2 1.6 3 3.5 5-1.9 2-3.5 3-3.5 5v3c0 2.6-1 4-4 4"/><path d="M17 17h6M17 22h4" opacity=".6"/></svg>
             <div class="sheet-body">
               <span class="where">Building 01 · API Reference</span>
@@ -126,8 +127,8 @@
               <p>Documentation for product teams listing on IBM.com marketplaces, AWS and Azure. Task-first, so the answer comes before the parameter table, with examples that look like systems people actually run.</p>
               <ul class="chips"><li class="chip">Onboarding guides</li><li class="chip">Task guides</li><li class="chip">Error catalogues</li></ul>
             </div>
-          </article>
-          <article class="sheet" id="p-style" role="tabpanel" aria-labelledby="t-style" data-bld="style" inert aria-hidden="true">
+          </div>
+          <div class="sheet" id="p-style" role="tabpanel" aria-labelledby="t-style" data-bld="style" inert aria-hidden="true">
             <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 31V9.5c0-1 .8-1.8 1.8-1.8H29v24H9.8c-1 0-1.8-.8-1.8-1.8Zm0 0c0-1 .8-1.8 1.8-1.8H29"/><path d="M14 14h9M14 18.5h6" opacity=".6"/></svg>
             <div class="sheet-body">
               <span class="where">Building 02 · Style Guide</span>
@@ -135,8 +136,8 @@
               <p>Rules that other writers and engineers can apply without asking me. A guide earns its place when a review comment can point to a line in it.</p>
               <ul class="chips"><li class="chip">Voice and tone</li><li class="chip">Glossary</li><li class="chip">Content patterns</li></ul>
             </div>
-          </article>
-          <article class="sheet" id="p-release" role="tabpanel" aria-labelledby="t-release" data-bld="release" inert aria-hidden="true">
+          </div>
+          <div class="sheet" id="p-release" role="tabpanel" aria-labelledby="t-release" data-bld="release" inert aria-hidden="true">
             <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7h16l6 6v20H9V7Z"/><path d="M25 7v6h6M14 19h12M14 24h12M14 29h7" opacity=".6"/></svg>
             <div class="sheet-body">
               <span class="where">Building 03 · Release Notes</span>
@@ -144,8 +145,8 @@
               <p>What changed, why it matters to the reader, and what they need to do next, in that order. Written so a skim still lands the point.</p>
               <ul class="chips"><li class="chip">Release notes</li><li class="chip">In-product announcements</li><li class="chip">Migration guides</li></ul>
             </div>
-          </article>
-          <article class="sheet" id="p-micro" role="tabpanel" aria-labelledby="t-micro" data-bld="micro" inert aria-hidden="true">
+          </div>
+          <div class="sheet" id="p-micro" role="tabpanel" aria-labelledby="t-micro" data-bld="micro" inert aria-hidden="true">
             <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11.5C7 9.6 8.6 8 10.5 8h19c1.9 0 3.5 1.6 3.5 3.5v11c0 1.9-1.6 3.5-3.5 3.5H20l-6.5 5.5V26h-3C8.6 26 7 24.4 7 22.5v-11Z"/><path d="M14 15h12M14 19.5h7" opacity=".6"/></svg>
             <div class="sheet-body">
               <span class="where">Building 04 · Microcopy</span>
@@ -153,7 +154,7 @@
               <p>Labels, empty states, errors and onboarding that carry someone through a flow. Small words, tested against the screen they live on.</p>
               <ul class="chips"><li class="chip">UI copy</li><li class="chip">Error and empty states</li><li class="chip">Onboarding</li></ul>
             </div>
-          </article>
+          </div>
         </div>
         <div class="folder-front" aria-hidden="true"><span>docs-quarter / practice</span><span id="fcount">File 1 of 4</span></div>
       </div>
@@ -276,9 +277,9 @@
   </main>
 
   <aside class="toc" aria-label="On this page">
-    <h4>On this page</h4>
+    <p class="side-label">On this page</p>
     <a href="#practice" data-spy="practice">Practice</a><a href="#library" data-spy="library">Library</a><a href="#lab" data-spy="lab">Writing lab</a><a href="#about" data-spy="about">About</a><a href="#contact" data-spy="contact">Contact</a>
-    <h4>Reading time</h4>
+    <p class="side-label">Reading time</p>
     <span class="mono" style="font-size:13px;color:var(--muted)" id="rt">5 min</span>
   </aside>
 </div>
@@ -289,14 +290,16 @@
 </div></footer>
 
 <div class="pal" id="pal" data-open="false" role="dialog" aria-modal="true" aria-label="Search the docs">
-  <div><input id="palq" type="text" placeholder="Search sections, case studies, actions…" autocomplete="off" aria-controls="pall"><ul id="pall" role="listbox"></ul></div>
+  <div><input id="palq" type="text" placeholder="Search sections, case studies, actions…" autocomplete="off" aria-label="Search the docs"><ul id="pall"></ul></div>
 </div>
 <div class="toast" id="toast" role="status"></div>
 
 <dialog class="player player-clip" id="flowerPlayer" aria-label="Goodbye flowers">
   <button type="button" class="btn" id="flowerClose">Close</button>
   <div class="player-frame player-frame-clip">
-    <video playsinline controls preload="none" src="/photos/goodbye-flowers.mp4" title="Goodbye flowers"></video>
+    <video playsinline controls preload="metadata" src="/photos/goodbye-flowers.mp4" aria-label="Goodbye flowers">
+      <track kind="captions" src="/photos/goodbye-flowers.vtt" srclang="en" label="English" default>
+    </video>
   </div>
 </dialog>
 

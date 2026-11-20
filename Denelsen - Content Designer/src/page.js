@@ -34,7 +34,7 @@
       var ext = '<svg class="mark" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 4.2H3.6v8.2h8.2V9.8"/><path d="M8.4 3.6h4v4M12.2 3.8 7.2 8.8"/></svg>';
       var links = '<a class="btn" href="./projects/' + d.slug + '/">' + book + 'Read the full case study</a>' + (d.live ? '<a class="btn" href="' + d.live[0] + '" rel="noopener">' + ext + d.live[1] + '</a>' : '');
       return '<div class="row" data-open="false" id="' + d.id.toLowerCase() + '"><button type="button" aria-expanded="false" aria-controls="p' + i + '"><span class="id">' + d.id + '</span><span class="thumb vig" data-vig="' + d.slug + '"></span><span class="title">' + d.title + '</span><span class="ctx">' + d.ctx + '</span>' + chev + '</button>' +
-        '<div class="panel" id="p' + i + '"><div><div class="facts"><div><h5>Brief</h5><p>' + d.brief + '</p><h5>Role</h5><p>' + d.role + '</p></div><div><h5>Content work</h5><ul>' + d.work.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ul></div><div><h5>Results</h5><ul class="res">' + res + '</ul></div></div><div class="links">' + links + '</div></div></div></div>';
+        '<div class="panel" id="p' + i + '"><div><div class="facts"><div><span class="kicker">Brief</span><p>' + d.brief + '</p><span class="kicker">Role</span><p>' + d.role + '</p></div><div><span class="kicker">Content work</span><ul>' + d.work.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ul></div><div><span class="kicker">Results</span><ul class="res">' + res + '</ul></div></div><div class="links">' + links + '</div></div></div></div>';
     }).join('');
     if (window.__mountVig) window.__mountVig(lib);
   }
@@ -311,8 +311,9 @@
   var ids = ['practice', 'library', 'lab', 'about', 'contact'];
   function spy() {
     var y = window.scrollY + 140, cur = null; ids.forEach(function (id) { var el = document.getElementById(id); if (el && el.offsetTop <= y) cur = id; });
-    $$('[data-spy]').forEach(function (a) { a.setAttribute('aria-current', a.dataset.spy === cur); });
-    $$('nav.main a').forEach(function (a) { a.setAttribute('aria-current', a.getAttribute('href') === '#' + cur); });
+    function mark(a, on) { if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); }
+    $$('[data-spy]').forEach(function (a) { mark(a, a.dataset.spy === cur); });
+    $$('nav.main a').forEach(function (a) { mark(a, a.getAttribute('href') === '#' + cur); });
     var h = document.documentElement; $('#bar').style.transform = 'scaleX(' + Math.min(1, window.scrollY / Math.max(1, h.scrollHeight - h.clientHeight)) + ')';
   }
   window.addEventListener('scroll', spy, { passive: true }); spy();
@@ -329,16 +330,17 @@
     { t: 'Set the scene to morning', s: 'Action', go: function () { window.__quarter && window.__quarter.setTau(0.3); } }
   ]);
   function draw() { var v = q.value.toLowerCase(); items = ALL.filter(function (a) { return !v || (a.t + ' ' + a.s).toLowerCase().indexOf(v) > -1; }); sel = Math.min(sel, Math.max(0, items.length - 1));
-    list.innerHTML = items.length ? items.map(function (a, i) { return '<li><button type="button" role="option" aria-selected="' + (i === sel) + '" data-i="' + i + '">' + a.t + '<span>' + a.s + '</span></button></li>'; }).join('') : '<li class="none">No match. Try a case study name.</li>'; }
+    list.innerHTML = items.length ? items.map(function (a, i) { return '<li><button type="button" class="' + (i === sel ? 'is-on' : '') + '" data-i="' + i + '">' + a.t + '<span>' + a.s + '</span></button></li>'; }).join('') : '<li class="none">No match. Try a case study name.</li>'; }
   var returnFocus = null;
-  function openPal() { returnFocus = document.activeElement; pal.dataset.open = 'true'; q.value = ''; sel = 0; draw(); setTimeout(function () { q.focus(); }, 0); }
-  function closePal() { pal.dataset.open = 'false'; if (returnFocus && returnFocus.focus) returnFocus.focus(); }
+  function setBehind(on) { Array.prototype.forEach.call(document.body.children, function (el) { if (el === pal || el.id === 'toast') return; if (on) el.setAttribute('inert', ''); else el.removeAttribute('inert'); }); }
+  function openPal() { returnFocus = document.activeElement; pal.dataset.open = 'true'; setBehind(true); q.value = ''; sel = 0; draw(); setTimeout(function () { q.focus(); }, 0); }
+  function closePal() { pal.dataset.open = 'false'; setBehind(false); if (returnFocus && returnFocus.focus) returnFocus.focus(); }
   function run(i) { var a = items[i]; if (!a) return; closePal(); setTimeout(a.go, 30); }
   /* ---------- commencement speech: play in a popup, stay on the page ---------- */
   var speechBtn = $('#openSpeech'), speechDlg = $('#speechPlayer');
   if (speechBtn && speechDlg && typeof speechDlg.showModal === 'function') {
     var speechFrame = speechDlg.querySelector('iframe');
-    var speechSrc = 'https://www.youtube-nocookie.com/embed/jqx_WQXyJdg?start=2&autoplay=1&rel=0';
+    var speechSrc = 'https://www.youtube-nocookie.com/embed/jqx_WQXyJdg?start=2&autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=en';
     speechBtn.addEventListener('click', function () { speechFrame.src = speechSrc; speechDlg.showModal(); });
     speechDlg.addEventListener('close', function () { speechFrame.removeAttribute('src'); });
     speechDlg.addEventListener('click', function (e) { if (e.target === speechDlg || e.target.id === 'speechClose') speechDlg.close(); });
